@@ -5,3 +5,4 @@ void mostrar_tabuleiro(ESTADO *estado){
     
 
 }
+ 
