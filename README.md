@@ -11,4 +11,4 @@ Diogo Camacho Barbosa , A93184
 
 ### Aula 5
  
-Nesta semana , desenvolvemos as principais funções do jogo "Rastros". Para podermos alterar as peças, mostrar o tabuleiro ao utilizados ,     começar e reiniciar o jogo , obter a jogada anterior , etc.
+#### Nesta semana , desenvolvemos as principais funções do jogo "Rastros", para o programa ter a capacidade de alterar a posição das peças,  mostrar o tabuleiro ao utilizador ,começar e reiniciar o jogo e obter a jogada anterior.
