@@ -12,6 +12,8 @@ ESTADO *inicializar_estado() {
             e->tab[l][c]=VAZIO;
         }
     e->tab[3][4]=BRANCA;
+    e->ultima_jogada.linha = 4;
+    e->ultima_jogada.coluna = 3;
     return e;
 }
 
@@ -29,12 +31,31 @@ int obter_numero_de_jogadas(ESTADO *estado){
 
 CASA obter_estado_casa(ESTADO *estado,int c,int l){
     int casa;
-    casa=estado->tab[l][c];
+    casa=estado->tab[c][l];
     return casa;   
 }
 
-int obter_coluna(ESTADO *estado){
-    int coluna;
-    coluna = estado->
+int is_near_branca(ESTADO *estado,int colatual,int linatual){
+    int col,lin,ans;
+    col = estado->ultima_jogada.coluna;
+    lin = estado->ultima_jogada.linha;
+    if ((abs(colatual-col)<=1)&&(abs(linatual-lin)<=1)) ans = 1;
+    else ans = 0;
+    return ans;
+}
 
+void put_branca(ESTADO *estado,int col,int lin){
+    estado->tab[col] [lin]=BRANCA;
+} 
+
+void put_preta(ESTADO *estado){
+    int col,lin;
+    col = estado->ultima_jogada.coluna;
+    lin = estado->ultima_jogada.linha;
+    estado->tab[col] [lin]=PRETA;
+}
+
+void atualiza_ultima_jogada(ESTADO *estado, int col , int lin){
+    estado->ultima_jogada.coluna = col;
+    estado->ultima_jogada.linha = lin;
 }

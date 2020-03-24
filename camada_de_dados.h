@@ -33,4 +33,12 @@ int obter_numero_de_jogadas(ESTADO *estado);
 
 CASA obter_estado_casa(ESTADO *e,int c,int l);
 
+int is_near_branca(ESTADO *estado,int colatual,int linatual);
+
+void put_branca(ESTADO *estado,int col,int lin);
+
+void put_preta(ESTADO *estado);
+
+void atualiza_ultima_jogada(ESTADO *estado, int col , int lin);
+
 #endif
