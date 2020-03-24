@@ -59,3 +59,19 @@ void atualiza_ultima_jogada(ESTADO *estado, int col , int lin){
     estado->ultima_jogada.coluna = col;
     estado->ultima_jogada.linha = lin;
 }
+
+int verifica_preta(ESTADO *estado,int col, int lin){
+    int ans=0;
+    if(estado->tab[col] [lin]==PRETA)
+        ans =1;
+    return ans;
+}
+
+int pode_mover(ESTADO *estado, int col, int lin){
+    int ans=1;
+    if(col==0&&lin==0){
+        if(verifica_preta(estado,col+1,lin)) ans=0;
+        if(verifica_preta(estado,col+1,lin+1)) ans=0;
+        if(verifica_preta(estado,col,lin+1)) ans=0;
+}
+}

@@ -41,4 +41,6 @@ void put_preta(ESTADO *estado);
 
 void atualiza_ultima_jogada(ESTADO *estado, int col , int lin);
 
+int verifica_preta(ESTADO *estado,int col, int lin);
+
 #endif
