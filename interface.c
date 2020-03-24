@@ -11,9 +11,9 @@ void mostrar_tabuleiro(ESTADO *e){
     int c,l;
     for(c=0;c<8;c++){
         for(l=0;l<8;l++){
-            if((*e).tab[l][c]==BRANCA)
+            if(obter_estado_casa(e,c,l)==BRANCA)
                 putchar('*');
-            if((*e).tab[l][c]==PRETA)
+            if(obter_estado_casa(e,c,l)==PRETA)
                 putchar('#');
             else{
             if(l==0&&c==7) 

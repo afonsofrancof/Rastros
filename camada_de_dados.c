@@ -27,10 +27,14 @@ int obter_numero_de_jogadas(ESTADO *estado){
     return n;
 }
 
-CASA obter_estado_casa(ESTADO *e, COORDENADA c){
-    int line,column,casa;
-    column=c.coluna;
-    line=c.linha;
-    casa=e->tab[line][column];
-    return casa;    
+CASA obter_estado_casa(ESTADO *estado,int c,int l){
+    int casa;
+    casa=estado->tab[l][c];
+    return casa;   
+}
+
+int obter_coluna(ESTADO *estado){
+    int coluna;
+    coluna = estado->
+
 }
