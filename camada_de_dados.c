@@ -69,9 +69,40 @@ int verifica_preta(ESTADO *estado,int col, int lin){
 
 int pode_mover(ESTADO *estado, int col, int lin){
     int ans=1;
-    if(col==0&&lin==0){
-        if(verifica_preta(estado,col+1,lin)) ans=0;
-        if(verifica_preta(estado,col+1,lin+1)) ans=0;
-        if(verifica_preta(estado,col,lin+1)) ans=0;
+    if(col==0&&lin==0)
+        if((verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col+1,lin+1))&&(verifica_preta(estado,col,lin+1))) ans=0;
+    if (col==7&&lin==7)
+        if((verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col-1,lin+1))) ans=0;
+    if (lin==0&&col!=7)
+        if((verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col+1,lin+1))&&(verifica_preta(estado,col-1,lin+1))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col+1,lin))) ans=0;
+    if (lin!=0&&col==0)
+        if((verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col+1,lin+1))&&(verifica_preta(estado,col+1,lin-1))) ans=0;
+    if (lin==7&&col!=0)
+        if((verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col-1,lin-1))&&(verifica_preta(estado,col+1,lin-1))) ans=0;
+    if (lin!=0&&col==7)
+        if((verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col-1,lin+1))&&(verifica_preta(estado,col-1,lin-1))) ans=0;
+    return ans;
 }
+
+void aumenta_jogadas(ESTADO *estado){
+    estado->num_jogadas++;
+}
+
+void modifica_jogador_atual(ESTADO *estado){
+    int a;
+    a = (estado->num_jogadas);
+    if (a%2==1) estado->jogador_atual=1;
+    else estado->jogador_atual=2;
+}
+
+int get_coluna_anterior(ESTADO *estado){
+    int a;
+    a = estado->ultima_jogada.coluna;
+    return a;
+}
+
+int get_linha_anterior(ESTADO *estado){
+    int a;
+    a = estado->ultima_jogada.linha;
+    return a;
 }
