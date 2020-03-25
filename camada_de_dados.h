@@ -31,6 +31,26 @@ int obter_jogador_atual(ESTADO *estado);
 
 int obter_numero_de_jogadas(ESTADO *estado);
 
-CASA obter_estado_casa(ESTADO *e, COORDENADA c);
+CASA obter_estado_casa(ESTADO *e,int c,int l);
+
+int is_near_branca(ESTADO *estado,int colatual,int linatual);
+
+void put_branca(ESTADO *estado,int col,int lin);
+
+void put_preta(ESTADO *estado);
+
+void atualiza_ultima_jogada(ESTADO *estado, int col , int lin);
+
+int verifica_preta(ESTADO *estado,int col, int lin);
+
+int pode_mover(ESTADO *estado, int col, int lin);
+
+void aumenta_jogadas(ESTADO *estado);
+
+void modifica_jogador_atual(ESTADO *estado);
+
+int get_coluna_anterior(ESTADO *estado);
+
+int get_linha_anterior(ESTADO *estado);
 
 #endif
