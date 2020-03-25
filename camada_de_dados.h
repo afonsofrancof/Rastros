@@ -43,4 +43,14 @@ void atualiza_ultima_jogada(ESTADO *estado, int col , int lin);
 
 int verifica_preta(ESTADO *estado,int col, int lin);
 
+int pode_mover(ESTADO *estado, int col, int lin);
+
+void aumenta_jogadas(ESTADO *estado);
+
+void modifica_jogador_atual(ESTADO *estado);
+
+int get_coluna_anterior(ESTADO *estado);
+
+int get_linha_anterior(ESTADO *estado);
+
 #endif
