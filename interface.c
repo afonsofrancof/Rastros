@@ -6,6 +6,8 @@
 #include "logica.h"
 #define BUF_SIZE 1024
 
+
+
 //[0][7],[7][0],[3][5];
 
 void mostrar_tabuleiro(ESTADO *e){
