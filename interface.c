@@ -11,9 +11,9 @@
 //[0][7],[7][0],[3][5];
 
 void mostrar_tabuleiro(ESTADO *e){
-    int c,l,contagem=1;
-    for(c=0;c<8;c++){
-       printf("%d|",contagem++);
+    int c,l,contagem=8;
+    for(c=7;c>=0;c--){
+       printf("%d|",contagem--);
         for(l=0;l<8;l++){
             if(obter_estado_casa(e,c,l)==BRANCA){
                 putchar(' ');
@@ -22,11 +22,11 @@ void mostrar_tabuleiro(ESTADO *e){
                 else if(obter_estado_casa(e,c,l)==PRETA){
                         putchar(' ');
                         putchar('#');}
-                        else if(l==0&&c==7){
+                        else if(l==0&&c==0){
                                 putchar(' ');
                                 putchar('1');
                                 }
-                                else if(l==7&&c==0){
+                                else if(l==7&&c==7){
                                         putchar(' ');
                                         putchar('2');}
                                         else {putchar(' '); putchar('.');}
@@ -41,17 +41,19 @@ void mostrar_tabuleiro(ESTADO *e){
 
 
 int interpretador(ESTADO *e) {
-    int jog1=0,jog2=0;
+    int jog1=0,jog2=0,n_comandos=1;
     char linha[BUF_SIZE];
     char col[2], lin[2];
-    char exit[2];
-    while (!jog1&&!jog2){ 
+    char exit[2],save[BUF_SIZE];
+    FILE *file;
+    while (!jog1&&!jog2){
+    printf("#%d -> PL %d ",n_comandos++,obter_jogador_atual(e));
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;   
-    if (sscanf(linha, "%[Q]", exit)==1) return 0;
-    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
-        COORDENADA coord = {*lin - '1',*col - 'a'};
-        printf("#%d -> PL %d  (%d)",e->num_jogadas,obter_jogador_atual(e),); 
+    if(sscanf(linha, "%[Q||q]", exit)==1) return 0;
+    //if(sscanf(linha,"%[gr] %s",save)) 
+    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
+        COORDENADA coord = {*lin - '1',*col - 'a'}; 
         jogar(e, coord,&jog1,&jog2);
         aumenta_jogadas(e);
         mostrar_tabuleiro(e);

@@ -11,9 +11,9 @@ ESTADO *inicializar_estado() {
         for(int c=0;c<=7;c++){
             e->tab[l][c]=VAZIO;
         }
-    e->tab[3][4]=BRANCA;
+    e->tab[4][4]=BRANCA;
     e->ultima_jogada.linha = 4;
-    e->ultima_jogada.coluna = 3;
+    e->ultima_jogada.coluna = 4;
     return e;
 }
 
@@ -69,6 +69,23 @@ int verifica_preta(ESTADO *estado,int col, int lin){
 
 int pode_mover(ESTADO *estado, int col, int lin){
     int ans=1;
+    if(col==0&&lin==7)
+        if((verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col+1,lin-1))&&(verifica_preta(estado,col,lin-1))) ans=0;
+    if (col==7&&lin==0)
+        if((verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col-1,lin-1))) ans=0;
+    if (lin==7&&col!=0&&col!=7)
+        if((verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col+1,lin-1))&&(verifica_preta(estado,col-1,lin-1))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col+1,lin))) ans=0;
+    if (lin!=0&&lin!=7&&col==0)
+        if((verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col+1,lin-1))&&(verifica_preta(estado,col+1,lin+1))) ans=0;
+    if (lin==0&&col!=7&&col!=0)
+        if((verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col-1,lin+1))&&(verifica_preta(estado,col+1,lin+1))) ans=0;
+    if (lin!=0&&lin!=7&&col==7)
+        if((verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col-1,lin-1))&&(verifica_preta(estado,col-1,lin+1))) ans=0;
+    return ans;
+}
+/*
+int pode_mover(ESTADO *estado, int col, int lin){
+    int ans=1;
     if(col==0&&lin==0)
         if((verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col+1,lin+1))&&(verifica_preta(estado,col,lin+1))) ans=0;
     if (col==7&&lin==7)
@@ -82,7 +99,7 @@ int pode_mover(ESTADO *estado, int col, int lin){
     if (lin!=0&&col==7)
         if((verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col-1,lin+1))&&(verifica_preta(estado,col-1,lin-1))) ans=0;
     return ans;
-}
+}*/
 
 void aumenta_jogadas(ESTADO *estado){
     estado->num_jogadas++;
