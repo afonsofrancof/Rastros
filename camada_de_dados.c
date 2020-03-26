@@ -6,7 +6,8 @@
 ESTADO *inicializar_estado() {
     ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
     e->jogador_atual = 1;
-    e->num_jogadas = 0;
+    e->num_jogadas = 1;
+    e->jogada = 0;
     for(int l=0;l<=7;l++)
         for(int c=0;c<=7;c++){
             e->tab[l][c]=VAZIO;
@@ -46,7 +47,7 @@ int is_near_branca(ESTADO *estado,int colatual,int linatual){
 
 void put_branca(ESTADO *estado,int col,int lin){
     estado->tab[col] [lin]=BRANCA;
-} 
+}
 
 void put_preta(ESTADO *estado){
     int col,lin;
@@ -91,9 +92,14 @@ void aumenta_jogadas(ESTADO *estado){
 void modifica_jogador_atual(ESTADO *estado){
     int a;
     a = (estado->num_jogadas);
-    if (a%2==1) estado->jogador_atual=1;
+    if(a==1) estado->jogador_atual=2;
+    else{
+    if(a%2==1) estado->jogador_atual=1;
     else estado->jogador_atual=2;
 }
+}
+
+
 
 int get_coluna_anterior(ESTADO *estado){
     int a;
@@ -105,4 +111,28 @@ int get_linha_anterior(ESTADO *estado){
     int a;
     a = estado->ultima_jogada.linha;
     return a;
+}
+
+int get_coluna(COORDENADA coord){
+    int a;
+    a=coord.coluna;
+    return a;
+}
+
+int get_linha(COORDENADA coord){
+    int a;
+    a=coord.linha;
+    return a;
+}
+
+int get_jogada(ESTADO *estado){
+    int a;
+    a=estado->jogada;
+    return a;
+}
+
+int atualiza_jogadas(ESTADO *estado){
+    int j=estado->jogador_atual;
+    if(j==1) estado->jogada++;
+    return get_jogada(estado);
 }
