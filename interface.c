@@ -47,11 +47,11 @@ int interpretador(ESTADO *e) {
         return 0;   
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*lin - '1',*col - 'a'};
+        printf("#%d -> PL %d  (%d)",e->num_jogadas,obter_jogador_atual(e),); 
         jogar(e, coord,&jog1,&jog2);
         aumenta_jogadas(e);
         mostrar_tabuleiro(e);
-        modifica_jogador_atual(e);
-        printf("O Jogador Atual é %d\n",obter_jogador_atual(e)); 
+        modifica_jogador_atual(e);//# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
     }
         if (!pode_mover(e,get_coluna_anterior(e),get_linha_anterior(e))&&obter_jogador_atual(e)==1) jog2=1; 
         if (!pode_mover(e,get_coluna_anterior(e),get_linha_anterior(e))&&obter_jogador_atual(e)==2) jog1=1;
