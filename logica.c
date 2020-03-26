@@ -5,7 +5,7 @@
 
 int jogar(ESTADO *e, COORDENADA c,int *jog1,int *jog2){
   int col = c.coluna,lin = c.linha;
-  if ((obter_estado_casa(e,col,lin)!=PRETA)&&(is_near_branca(e,col,lin))&&((lin<8)&&(col<8)&&(lin>0)&&(col>0))){
+  if ((obter_estado_casa(e,col,lin)!=PRETA)&&(is_near_branca(e,col,lin))){ // &&((lin<8)&&(col<8)&&(lin>=0)&&(col>=0))
   put_branca(e,col,lin);
   put_preta(e);
   atualiza_ultima_jogada(e,col,lin);

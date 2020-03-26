@@ -69,17 +69,17 @@ int verifica_preta(ESTADO *estado,int col, int lin){
 
 int pode_mover(ESTADO *estado, int col, int lin){
     int ans=1;
-    if(col==0&&lin==0)
+    if(col==0&&lin==0) // canto superior esquerdo
         if((verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col+1,lin+1))&&(verifica_preta(estado,col,lin+1))) ans=0;
-    if (col==7&&lin==7)
+    if (col==7&&lin==7) // canto inferior direito
         if((verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col-1,lin+1))) ans=0;
-    if (lin==0&&col!=7)
+    if (lin==0&&col!=7&&col!=0) // linha de cima sem os 2 cantos
         if((verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col+1,lin+1))&&(verifica_preta(estado,col-1,lin+1))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col+1,lin))) ans=0;
-    if (lin!=0&&col==0)
+    if (col==0&&lin!=7&&lin!=0) // coluna da esquerda sem os 2 cantos
         if((verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col+1,lin+1))&&(verifica_preta(estado,col+1,lin-1))) ans=0;
-    if (lin==7&&col!=0)
+    if (lin==7&&col!=0&&col!=7) // linha de baixo sem os 2 cantos
         if((verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col+1,lin))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col-1,lin-1))&&(verifica_preta(estado,col+1,lin-1))) ans=0;
-    if (lin!=0&&col==7)
+    if (lin!=0&&lin!=7&&col==7) // coluna da direita sem os 2 cantos
         if((verifica_preta(estado,col,lin-1))&&(verifica_preta(estado,col,lin+1))&&(verifica_preta(estado,col-1,lin))&&(verifica_preta(estado,col-1,lin+1))&&(verifica_preta(estado,col-1,lin-1))) ans=0;
     return ans;
 }

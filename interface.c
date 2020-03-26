@@ -46,12 +46,12 @@ int interpretador(ESTADO *e) {
     char col[2], lin[2];
     char exit[2];
     while (!jog1&&!jog2){ 
+    printf("#%d -> PL %d  ",e->num_jogadas+1,obter_jogador_atual(e));
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;   
     if (sscanf(linha, "%[Q]", exit)==1) return 0;
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
-        COORDENADA coord = {*lin - '1',*col - 'a'};
-        printf("#%d -> PL %d  (%d)",e->num_jogadas,obter_jogador_atual(e),); 
+        COORDENADA coord = {*lin - '1',*col - 'a'}; 
         jogar(e, coord,&jog1,&jog2);
         aumenta_jogadas(e);
         mostrar_tabuleiro(e);
