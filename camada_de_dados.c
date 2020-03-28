@@ -133,6 +133,6 @@ int get_jogada(ESTADO *estado){
 
 int atualiza_jogadas(ESTADO *estado){
     int j=estado->jogador_atual;
-    if(j==1) estado->jogada++;
+    if((j==1) estado->jogada++;
     return get_jogada(estado);
 }
