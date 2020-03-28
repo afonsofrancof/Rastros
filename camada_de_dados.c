@@ -139,7 +139,7 @@ int atualiza_jogadas(ESTADO *estado){
 
 void set_casa(ESTADO *e, int c, int l, CASA casa){
     switch(casa){
-        case '*' : e->tab[c][l] = BRANCA; atualiza_ultima_jogada(e,c,l); break;
+        case '*' : e->tab[c][l] = BRANCA; break;
         case '#' : e->tab[c][l] = PRETA ; break;
         case '.' : e->tab[c][l] = VAZIO ; break;
     }

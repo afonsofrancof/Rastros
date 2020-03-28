@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "camada_de_dados.h"
 #include "interface.h"
 #include "logica.h"
@@ -34,22 +35,72 @@ void mostrar_tabuleiro(ESTADO *e){
     putchar('\n');
 }
 
+void mostrar_tabuleiro_gr(FILE *fp,ESTADO *e){
+    int c,l;
+    for(l=7;l>=0;l--){
+        for(c=0;c<=7;c++){
+            if(obter_estado_casa(e,c,l)==BRANCA){
+                fputc('*',fp);
+                }
+                else if(obter_estado_casa(e,c,l)==PRETA){
+                        fputc('#',fp);
+                        }
+                        else if(l==7&&c==7){
+                                fputc('2',fp);
+                                }
+                                else if(l==0&&c==0){
+                                        fputc('1',fp);}
+                                        else  fputc('.',fp);
+        }
+    fputc('\n',fp);
+    }
+    fputc('\n',fp);
+}
+/*
+void mostrar_tabuleiro_gr(FILE *fp,ESTADO *e){
+    int c,l;
+    for(l=7;l>=0;l--){
+        for(c=0;c<=7;c++){
+            fprintf(fp,"%c",e->tab[c][l]);
+        }
+    }
+}
+*/
+
+void gravar(ESTADO *e,char *filename){
+        FILE *fp;
+        fp = fopen(filename,"w");
+        mostrar_tabuleiro_gr(fp,e);
+        fclose(fp);
+}
+
+void ler(ESTADO *e,char *filename){
+    FILE *fp;
+    fp = fopen(filename,"r");
+    char buffer[BUF_SIZE];
+    int l=7;
+    while(fgets(buffer,BUF_SIZE,fp)!=NULL){
+        for(int c = 0;c<=7;c++){
+            set_casa(e,c,l,buffer[c]);
+        }
+        l--;
+    }
+    fclose(fp);
+    mostrar_tabuleiro(e);
+}
 
 
 
 int interpretador(ESTADO *e) {
-    int jog1=0,jog2=0,contador=1;
-    char linha[BUF_SIZE];
-    char col[2], lin[2];
-    int jogada_valida;
-    char exit[2],save[BUF_SIZE];
-    FILE *file;
+    int jog1=0,jog2=0,contador=1,jogada_valida;
+    char linha[BUF_SIZE],col[2], lin[2],exit[2],save[2],savee[2],saveee[BUF_SIZE];
     while (!jog1&&!jog2){ 
     printf("#%d  PL %d (%d) -> ",contador,obter_jogador_atual(e),get_jogada(e)); ///home/diogo/rastros/interface.c
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
-        return 0;   
-    //if(sscanf(linha,"%[gr] %s",save)>4) file=fopen("save_estado/save[4].txt","w");
+        return 0;
     if(sscanf(linha, "%[Q||q]", exit)==1) return 0;
+    if(sscanf(linha,"%[g]%[r] %s",save,savee,saveee)==3) gravar(e,saveee);
+    if(sscanf(linha,"%[r]%[d] %s",save,savee,saveee)==3) ler(e,saveee);
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a',*lin - '1'}; 
         jogada_valida =jogar(e, coord,&jog1,&jog2);

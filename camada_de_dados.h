@@ -1,7 +1,7 @@
 #ifndef CAMADA_DADOS_H
 #define CAMADA_DADOS_H
 
-typedef enum {VAZIO, BRANCA, PRETA} CASA;
+typedef enum {VAZIO='.', BRANCA='*', PRETA='#'} CASA;
 
 typedef struct {
     int coluna;
@@ -61,5 +61,9 @@ int get_linha(COORDENADA coord);
 int get_jogada(ESTADO *estado);
 
 int atualiza_jogadas(ESTADO *estado);
+
+void set_casa(ESTADO *e,int c,int l, CASA casa);
+
+void teste(CASA casa);
 
 #endif
