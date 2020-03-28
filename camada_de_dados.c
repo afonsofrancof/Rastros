@@ -87,13 +87,11 @@ int pode_mover(ESTADO *estado, int col, int lin){
     return ans;
 }
 
-void aumenta_jogadas(ESTADO *estado){
-    estado->num_jogadas++;
-}
 
-void modifica_jogador_atual(ESTADO *estado){
+
+void modifica_jogador_atual(ESTADO *estado,int *contador){
     int a;
-    a = (estado->num_jogadas);
+    a = *contador;
     if(a==1) estado->jogador_atual=2;
     else{
     if(a%2==1) estado->jogador_atual=1;
@@ -135,6 +133,6 @@ int get_jogada(ESTADO *estado){
 
 int atualiza_jogadas(ESTADO *estado){
     int j=estado->jogador_atual;
-    if(j==1) estado->jogada++;
+    if(j==2) estado->jogada++;
     return get_jogada(estado);
 }
