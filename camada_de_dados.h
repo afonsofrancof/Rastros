@@ -58,4 +58,8 @@ int get_coluna(COORDENADA coord);
 
 int get_linha(COORDENADA coord);
 
+int get_jogada(ESTADO *estado);
+
+int atualiza_jogadas(ESTADO *estado);
+
 #endif
