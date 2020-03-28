@@ -41,22 +41,21 @@ int interpretador(ESTADO *e) {
     int jog1=0,jog2=0,contador=1;
     char linha[BUF_SIZE];
     char col[2], lin[2];
-    int ctrl_j;
+    int jogada_valida;
     char exit[2],save[BUF_SIZE];
     FILE *file;
     while (!jog1&&!jog2){ 
-    printf("#%d  PL %d (%d) -> ",contador,obter_jogador_atual(e),atualiza_jogadas(e)); ///home/diogo/rastros/interface.c
+    printf("#%d  PL %d (%d) -> ",contador,obter_jogador_atual(e),get_jogada(e)); ///home/diogo/rastros/interface.c
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;   
     //if(sscanf(linha,"%[gr] %s",save)>4) file=fopen("save_estado/save[4].txt","w");
     if(sscanf(linha, "%[Q||q]", exit)==1) return 0;
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a',*lin - '1'}; 
-        ctrl_j =jogar(e, coord,&jog1,&jog2);
-        if(ctrl_j) aumenta_jogadas(e);
+        jogada_valida =jogar(e, coord,&jog1,&jog2);
         mostrar_tabuleiro(e);
-        if(ctrl_j) {modifica_jogador_atual(e);//# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
-        contador++;
+        if(jogada_valida) atualiza_jogadas(e);
+        if(jogada_valida) {contador++;modifica_jogador_atual(e,&contador);//# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
         }
     }
     else printf ("Jogada Inválida\n");
