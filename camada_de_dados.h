@@ -48,7 +48,7 @@ int pode_mover(ESTADO *estado, int col, int lin);
 
 void aumenta_jogadas(ESTADO *estado);
 
-void modifica_jogador_atual(ESTADO *estado);
+void modifica_jogador_atual(ESTADO *estado,int *contador);
 
 int get_coluna_anterior(ESTADO *estado);
 
