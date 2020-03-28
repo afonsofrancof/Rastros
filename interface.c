@@ -93,14 +93,14 @@ void ler(ESTADO *e,char *filename){
 
 int interpretador(ESTADO *e) {
     int jog1=0,jog2=0,contador=1,jogada_valida;
-    char linha[BUF_SIZE],col[2], lin[2],exit[2],save[2],savee[2],saveee[BUF_SIZE];
+    char linha[BUF_SIZE],col[2], lin[2],exit[2],aux[2],aux1[2],filename[BUF_SIZE];
     while (!jog1&&!jog2){ 
     printf("#%d  PL %d (%d) -> ",contador,obter_jogador_atual(e),get_jogada(e)); ///home/diogo/rastros/interface.c
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
     if(sscanf(linha, "%[Q||q]", exit)==1) return 0;
-    if(sscanf(linha,"%[g]%[r] %s",save,savee,saveee)==3) gravar(e,saveee);
-    if(sscanf(linha,"%[r]%[d] %s",save,savee,saveee)==3) ler(e,saveee);
+    if(sscanf(linha,"%[g]%[r] %s",aux,aux1,filename)==3) gravar(e,filename);
+    if(sscanf(linha,"%[r]%[d] %s",aux,aux1,filename)==3) ler(e,filename);
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a',*lin - '1'}; 
         jogada_valida =jogar(e, coord,&jog1,&jog2);
