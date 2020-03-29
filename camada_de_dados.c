@@ -160,8 +160,10 @@ void armazena_jogada(ESTADO *e,COORDENADA c){
         e->jogadas[get_jogada(e)].jogador2=c;
 }
 
-void get_jogada_index(ESTADO *e,int a){
+
+
+/*void get_jogada_index(ESTADO *e,int a){
     int col = e->jogadas[a].jogador1.coluna;
     int lin = e->jogadas[a].jogador1.linha;
     printf("%d %d \n",col , lin);
-}
+}*/
