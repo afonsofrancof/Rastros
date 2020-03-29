@@ -68,6 +68,6 @@ void teste(CASA casa);
 
 void armazena_jogada(ESTADO *e,COORDENADA c);
 
-void get_jogada_index(ESTADO *e,int a);
+void display_jogadas(ESTADO *e);
 
 #endif
