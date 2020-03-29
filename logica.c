@@ -9,6 +9,7 @@ int jogar(ESTADO *e, COORDENADA c,int *jog1,int *jog2){
   put_branca(e,col,lin);
   put_preta(e);
   atualiza_ultima_jogada(e,col,lin);
+  armazena_jogada(e,c);
   if (col==7&&lin==7)  *jog2 = 1;
   if (col==0&&lin==0)  *jog1 = 1; 
   }

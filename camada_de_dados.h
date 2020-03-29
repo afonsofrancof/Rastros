@@ -66,4 +66,8 @@ void set_casa(ESTADO *e,int c,int l, CASA casa);
 
 void teste(CASA casa);
 
+void armazena_jogada(ESTADO *e,COORDENADA c);
+
+void get_jogada_index(ESTADO *e,int a);
+
 #endif

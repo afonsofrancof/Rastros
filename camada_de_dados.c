@@ -152,3 +152,16 @@ void teste(CASA casa){
         case '#' : printf("PRETA"); break;
     }
 }
+
+void armazena_jogada(ESTADO *e,COORDENADA c){
+    if (obter_jogador_atual(e)==1)
+        e->jogadas[get_jogada(e)].jogador1=c;
+    else 
+        e->jogadas[get_jogada(e)].jogador2=c;
+}
+
+void get_jogada_index(ESTADO *e,int a){
+    int col = e->jogadas[a].jogador1.coluna;
+    int lin = e->jogadas[a].jogador1.linha;
+    printf("%d %d \n",col , lin);
+}
