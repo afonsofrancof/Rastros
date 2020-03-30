@@ -72,4 +72,6 @@ void display_jogadas(ESTADO *e);
 
 void fdisplay_jogadas(FILE *fp,ESTADO *e);
 
+void le_e_escreve_jogadas(ESTADO *e,int col,int lin,int n_jogada,int jog);
+
 #endif

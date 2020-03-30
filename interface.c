@@ -53,7 +53,6 @@ void mostrar_tabuleiro_gr(FILE *fp,ESTADO *e){
         }
     fputc('\n',fp);
     }
-    fputc('\n',fp);
 }
 /*
 void mostrar_tabuleiro_gr(FILE *fp,ESTADO *e){
@@ -79,14 +78,24 @@ void ler(ESTADO *e,char *filename){
     FILE *fp;
     fp = fopen(filename,"r");
     char buffer[BUF_SIZE];
-    int l=7;
+    int l=7,contador=0,n_jogada,col,lin,i;
     while(fgets(buffer,BUF_SIZE,fp)!=NULL){
-        for(int c = 0;c<=7;c++){
+        for(int c = 0;c<=7&&l>=0;c++){
             set_casa(e,c,l,buffer[c]);
         }
         l--;
+        contador++;
+
+    for(contador=8;contador>=8&&buffer[i]!='\n';contador++,i++){
+        n_jogada=contador-7;
+        col=buffer[4]-'a';
+        lin=buffer[5]-'0';
+        le_e_escreve_jogadas(e,col,lin,n_jogada,1);
+        col=buffer[7]-'a';
+        lin=buffer[8]-'0';
+        le_e_escreve_jogadas(e,col,lin,n_jogada,2);
     }
-    
+    }
     fclose(fp);
     mostrar_tabuleiro(e);
 }

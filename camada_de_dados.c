@@ -139,7 +139,7 @@ int atualiza_jogadas(ESTADO *estado){
 
 void set_casa(ESTADO *e, int c, int l, CASA casa){
     switch(casa){
-        case '*' : e->tab[c][l] = BRANCA; break;
+        case '*' : e->tab[c][l] = BRANCA; e->ultima_jogada.coluna=c; e->ultima_jogada.linha=l; break;
         case '#' : e->tab[c][l] = PRETA ; break;
         case '.' : e->tab[c][l] = VAZIO ; break;
     }
@@ -148,8 +148,8 @@ void set_casa(ESTADO *e, int c, int l, CASA casa){
 void teste(CASA casa){
     switch(casa){
         case '*' : printf("BRANCA"); break;
-        case '.' : printf("VAZIO"); break;
         case '#' : printf("PRETA"); break;
+        case '.' : printf("VAZIO"); break;
     }
 }
 
@@ -212,12 +212,24 @@ void fdisplay_jogadas(FILE *fp,ESTADO *e){
     else num_jogadas = get_jogada(e);
     char coordenada_final[]="a";
     for(i=0;i<=num_jogadas;i++){
-        fprintf(fp,"%02d : ",i);
+        fprintf(fp,"%02d: ",i);
         get_and_transforma_jogadas(e,1,i,coordenada_final);
         fprint_string(fp,coordenada_final);
         get_and_transforma_jogadas(e,2,i,coordenada_final);
         fputc(' ',fp);
         fprint_string(fp,coordenada_final);
         fputc('\n',fp);
+    }
+}
+
+
+void le_e_escreve_jogadas(ESTADO *e,int col,int lin,int n_jogada,int jog){
+    if(jog==1){
+        e->jogadas[n_jogada].jogador1.coluna=col;
+        e->jogadas[n_jogada].jogador1.linha=lin;
+    }
+    else{
+        e->jogadas[n_jogada].jogador2.coluna=col;
+        e->jogadas[n_jogada].jogador2.linha=lin;
     }
 }

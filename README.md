@@ -8,4 +8,3 @@ LI2 - PL7 - Grupo 9
 
 Afonso Franco Ferreira , A93212
 Diogo Camacho Barbosa , A93184
- 
