@@ -160,10 +160,64 @@ void armazena_jogada(ESTADO *e,COORDENADA c){
         e->jogadas[get_jogada(e)].jogador2=c;
 }
 
+void get_and_transforma_jogadas(ESTADO *e,int jog,int numero_da_jogada,char *coordenada){
+    int col,lin;
+    char col2;
+    if (jog==1) {
+    col = e->jogadas[numero_da_jogada].jogador1.coluna;
+    lin = e->jogadas[numero_da_jogada].jogador1.linha+1;
+    }
+    else{
+    col = e->jogadas[numero_da_jogada].jogador2.coluna;
+    lin = e->jogadas[numero_da_jogada].jogador2.linha+1;
+    }
+    col2=col+'a';
+    coordenada[0]=col2;
+    coordenada[1]=lin+'0';
 
+}
 
-/*void get_jogada_index(ESTADO *e,int a){
-    int col = e->jogadas[a].jogador1.coluna;
-    int lin = e->jogadas[a].jogador1.linha;
-    printf("%d %d \n",col , lin);
-}*/
+void print_string(char *string){
+    for(int i=0;string[i];i++){
+        putchar(string[i]);
+    }
+}
+
+void fprint_string(FILE *fp,char *string){
+    for(int i=0;string[i];i++){
+        fputc(string[i],fp);
+    }
+}
+/*
+void display_jogadas(ESTADO *e){
+    int i,num_jogadas;
+    if (obter_jogador_atual(e)==1) num_jogadas = get_jogada(e)-1;
+    else num_jogadas = get_jogada(e);
+    char coordenada_final[]="a";
+    for(i=0;i<=num_jogadas;i++){
+        printf("%02d : ",i);
+        get_and_transforma_jogadas(e,1,i,coordenada_final);
+        print_string(coordenada_final);
+        get_and_transforma_jogadas(e,2,i,coordenada_final);
+        putchar(' ');
+        print_string(coordenada_final);
+        putchar('\n');
+    }
+}
+*/
+
+void fdisplay_jogadas(FILE *fp,ESTADO *e){
+    int i,num_jogadas;
+    if (obter_jogador_atual(e)==1) num_jogadas = get_jogada(e)-1;
+    else num_jogadas = get_jogada(e);
+    char coordenada_final[]="a";
+    for(i=0;i<=num_jogadas;i++){
+        fprintf(fp,"%02d : ",i);
+        get_and_transforma_jogadas(e,1,i,coordenada_final);
+        fprint_string(fp,coordenada_final);
+        get_and_transforma_jogadas(e,2,i,coordenada_final);
+        fputc(' ',fp);
+        fprint_string(fp,coordenada_final);
+        fputc('\n',fp);
+    }
+}
