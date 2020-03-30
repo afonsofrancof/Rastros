@@ -70,4 +70,6 @@ void armazena_jogada(ESTADO *e,COORDENADA c);
 
 void display_jogadas(ESTADO *e);
 
+void fdisplay_jogadas(FILE *fp,ESTADO *e);
+
 #endif
