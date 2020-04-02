@@ -137,7 +137,7 @@ int interpretador(ESTADO *e)
             return 0;
         if (sscanf(linha, "%[Q||q]", exit) == 1)
             return 0;
-        if (sscanf(linha, % [p] % [o] % [s] % d, aux, aux, aux, movs_int) == 3)
+        if (sscanf(linha, "%[p]%[o]%[s]%d", aux, aux, aux, movs_int) == 3)
             mostra_pos(e, ) if (sscanf(linha, "%[m]%[o]%[v]%[s]", aux, aux, aux, aux) == 4) fdisplay_jogadas(stdout, e);
         if (sscanf(linha, "%[g]%[r] %s", aux, aux1, filename) == 3)
             gravar(e, filename);
