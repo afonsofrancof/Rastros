@@ -1,21 +1,29 @@
 #ifndef CAMADA_DADOS_H
 #define CAMADA_DADOS_H
 
-typedef enum {VAZIO='.', BRANCA='*', PRETA='#'} CASA;
+typedef enum
+{
+    VAZIO = '.',
+    BRANCA = '*',
+    PRETA = '#'
+} CASA;
 
-typedef struct {
+typedef struct
+{
     int coluna;
     int linha;
 } COORDENADA;
 
-typedef struct {
+typedef struct
+{
     COORDENADA jogador1;
     COORDENADA jogador2;
 } JOGADA;
 
 typedef JOGADA JOGADAS[32];
 
-typedef struct {
+typedef struct
+{
     CASA tab[8][8];
     COORDENADA ultima_jogada;
     JOGADAS jogadas;
@@ -24,31 +32,29 @@ typedef struct {
     int jogada;
 } ESTADO;
 
-
-
 ESTADO *inicializar_estado();
 
 int obter_jogador_atual(ESTADO *estado);
 
 int obter_numero_de_jogadas(ESTADO *estado);
 
-CASA obter_estado_casa(ESTADO *e,int c,int l);
+CASA obter_estado_casa(ESTADO *e, int c, int l);
 
-int is_near_branca(ESTADO *estado,int colatual,int linatual);
+int is_near_branca(ESTADO *estado, int colatual, int linatual);
 
-void put_branca(ESTADO *estado,int col,int lin);
+void put_branca(ESTADO *estado, int col, int lin);
 
 void put_preta(ESTADO *estado);
 
-void atualiza_ultima_jogada(ESTADO *estado, int col , int lin);
+void atualiza_ultima_jogada(ESTADO *estado, int col, int lin);
 
-int verifica_preta(ESTADO *estado,int col, int lin);
+int verifica_preta(ESTADO *estado, int col, int lin);
 
 int pode_mover(ESTADO *estado, int col, int lin);
 
 void aumenta_jogadas(ESTADO *estado);
 
-void modifica_jogador_atual(ESTADO *estado,int *contador);
+void modifica_jogador_atual(ESTADO *estado, int *contador);
 
 int get_coluna_anterior(ESTADO *estado);
 
@@ -62,16 +68,16 @@ int get_jogada(ESTADO *estado);
 
 int atualiza_jogadas(ESTADO *estado);
 
-void set_casa(ESTADO *e,int c,int l, CASA casa);
+void set_casa(ESTADO *e, int c, int l, CASA casa);
 
 void teste(CASA casa);
 
-void armazena_jogada(ESTADO *e,COORDENADA c);
+void armazena_jogada(ESTADO *e, COORDENADA c);
 
 void display_jogadas(ESTADO *e);
 
-void fdisplay_jogadas(FILE *fp,ESTADO *e);
+void fdisplay_jogadas(FILE *fp, ESTADO *e);
 
-void le_e_escreve_jogadas(ESTADO *e,int col,int lin,int n_jogada,int jog);
+void le_e_escreve_jogadas(ESTADO *e, int col, int lin, int n_jogada, int jog);
 
 #endif
