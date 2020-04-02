@@ -110,7 +110,6 @@ void ler(ESTADO *e, char *filename)
         }
         l--;
         contador++;
-
         for (contador = 8; contador >= 8 && buffer[i] != '\n'; contador++, i++)
         {
             n_jogada = contador - 7;
@@ -126,9 +125,58 @@ void ler(ESTADO *e, char *filename)
     mostrar_tabuleiro(e);
 }
 
+/* ESTADO *inicializar_estado()
+{
+    ESTADO *e = (ESTADO *)malloc(sizeof(ESTADO));
+    e->jogador_atual = 1;
+    e->num_jogadas = 1;
+    e->jogada = 0;
+    for (int l = 7; l <= 0; l--)
+        for (int c = 0; c <= 7; c++)
+        {
+            e->tab[c][l] = VAZIO;
+        }
+    e->tab[4][4] = BRANCA;
+    e->ultima_jogada.linha = 4;
+    e->ultima_jogada.coluna = 4;
+    return e;
+} */
+
+void mostra_pos(ESTADO *e, int pos, int *jog1, int *jog2)
+{
+    int contador = 0;
+    JOGADAS backup;
+    for (int i = 0; i <= pos; i++)
+    {
+        backup[i].jogador1 = e->jogadas[i].jogador1;
+        backup[i].jogador2 = e->jogadas[i].jogador2;
+    }
+    e->jogador_atual = 1;
+    e->num_jogadas = 1;
+    e->jogada = 0;
+    for (int l = 7; l <= 0; l--)
+        for (int c = 0; c <= 7; c++)
+        {
+            e->tab[c][l] = VAZIO;
+        }
+    e->tab[4][4] = BRANCA;
+    e->ultima_jogada.linha = 4;
+    e->ultima_jogada.coluna = 4;
+    for (int u = 0; u <= pos; u++)
+    {
+        jogar(e, backup[u].jogador1, jog1, jog2);
+        atualiza_jogadas(e);
+        jogar(e, backup[u].jogador2, jog1, jog2);
+        atualiza_jogadas(e);
+        contador++;
+        modifica_jogador_atual(e, &contador);
+    }
+    mostrar_tabuleiro(e);
+}
+
 int interpretador(ESTADO *e)
 {
-    int jog1 = 0, jog2 = 0, contador = 1, jogada_valida, movs_int;
+    int jog1 = 0, jog2 = 0, contador = 1, jogada_valida, movs_int[2];
     char linha[BUF_SIZE], col[2], lin[2], exit[2], aux[2], aux1[2], filename[BUF_SIZE];
     while (!jog1 && !jog2)
     {
@@ -137,8 +185,10 @@ int interpretador(ESTADO *e)
             return 0;
         if (sscanf(linha, "%[Q||q]", exit) == 1)
             return 0;
-        if (sscanf(linha, "%[p]%[o]%[s]%d", aux, aux, aux, movs_int) == 3)
-            mostra_pos(e, ) if (sscanf(linha, "%[m]%[o]%[v]%[s]", aux, aux, aux, aux) == 4) fdisplay_jogadas(stdout, e);
+        if (sscanf(linha, "%[p]%[o]%[s] %d", aux, aux, aux, movs_int) == 4)
+            mostra_pos(e, movs_int[0], &jog1, &jog2);
+        if (sscanf(linha, "%[m]%[o]%[v]%[s]", aux, aux, aux, aux) == 4)
+            fdisplay_jogadas(stdout, e);
         if (sscanf(linha, "%[g]%[r] %s", aux, aux1, filename) == 3)
             gravar(e, filename);
         if (sscanf(linha, "%[r]%[d] %s", aux, aux1, filename) == 3)
