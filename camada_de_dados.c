@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "camada_de_dados.h"
+#include "logica.h"
 
 ESTADO *inicializar_estado()
 {
@@ -9,7 +10,7 @@ ESTADO *inicializar_estado()
     e->jogador_atual = 1;
     e->num_jogadas = 1;
     e->jogada = 0;
-    for (int l = 7; l <= 0; l--)
+    for (int l = 7; l >= 0; l--)
         for (int c = 0; c <= 7; c++)
         {
             e->tab[c][l] = VAZIO;
@@ -18,6 +19,17 @@ ESTADO *inicializar_estado()
     e->ultima_jogada.linha = 4;
     e->ultima_jogada.coluna = 4;
     return e;
+}
+
+void empty_tabuleiro(ESTADO *e)
+{
+    for (int l = 7; l >= 0; l--)
+    {
+        for (int c = 0; c <= 7; c++)
+        {
+            e->tab[c][l] = VAZIO;
+        }
+    }
 }
 
 int obter_jogador_atual(ESTADO *estado)
@@ -107,15 +119,13 @@ int pode_mover(ESTADO *estado, int col, int lin)
     return ans;
 }
 
-void modifica_jogador_atual(ESTADO *estado, int *contador)
+void modifica_jogador_atual(ESTADO *estado, int contador)
 {
-    int a;
-    a = *contador;
-    if (a == 1)
+    if (contador == 1)
         estado->jogador_atual = 2;
     else
     {
-        if (a % 2 == 1)
+        if (contador % 2 == 1)
             estado->jogador_atual = 1;
         else
             estado->jogador_atual = 2;
@@ -290,5 +300,45 @@ void le_e_escreve_jogadas(ESTADO *e, int col, int lin, int n_jogada, int jog)
     {
         e->jogadas[n_jogada].jogador2.coluna = col;
         e->jogadas[n_jogada].jogador2.linha = lin;
+    }
+}
+
+void put_jogada(ESTADO *e, int jogada)
+{
+    e->jogada = jogada;
+}
+
+void put_jogador_atual(ESTADO *e, int jog)
+{
+    e->jogador_atual = jog;
+}
+
+void put_num_jogadas(ESTADO *e, int num_jogadas)
+{
+    e->num_jogadas = num_jogadas;
+}
+
+int jogar_pos(ESTADO *e, JOGADAS *backup, int pos)
+{
+    pos--;
+    int contador = 1;
+    for (int u = 0; u <= pos; u++)
+    {
+        jogar(e, backup[u]->jogador1, 0, 0);
+        atualiza_jogadas(e);
+        jogar(e, backup[u]->jogador2, 0, 0);
+        atualiza_jogadas(e);
+        contador++;
+        modifica_jogador_atual(e, contador);
+    }
+    return contador;
+}
+
+void array_backup(ESTADO *e, JOGADAS *backup, int pos)
+{
+    for (int i = 0; i <= pos; i++)
+    {
+        backup[i]->jogador1 = e->jogadas[i].jogador1;
+        backup[i]->jogador2 = e->jogadas[i].jogador2;
     }
 }

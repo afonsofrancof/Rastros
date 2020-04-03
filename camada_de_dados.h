@@ -34,6 +34,8 @@ typedef struct
 
 ESTADO *inicializar_estado();
 
+void empty_tabuleiro(ESTADO *e);
+
 int obter_jogador_atual(ESTADO *estado);
 
 int obter_numero_de_jogadas(ESTADO *estado);
@@ -54,7 +56,7 @@ int pode_mover(ESTADO *estado, int col, int lin);
 
 void aumenta_jogadas(ESTADO *estado);
 
-void modifica_jogador_atual(ESTADO *estado, int *contador);
+void modifica_jogador_atual(ESTADO *estado, int contador);
 
 int get_coluna_anterior(ESTADO *estado);
 
@@ -79,5 +81,15 @@ void display_jogadas(ESTADO *e);
 void fdisplay_jogadas(FILE *fp, ESTADO *e);
 
 void le_e_escreve_jogadas(ESTADO *e, int col, int lin, int n_jogada, int jog);
+
+void put_jogada(ESTADO *e, int jogada);
+
+void put_jogador_atual(ESTADO *e, int jog);
+
+void put_num_jogadas(ESTADO *e, int num_jogadas);
+
+int jogar_pos(ESTADO *e, JOGADAS *backup, int pos);
+
+void array_backup(ESTADO *e, JOGADAS *backup, int pos);
 
 #endif

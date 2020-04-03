@@ -142,58 +142,41 @@ void ler(ESTADO *e, char *filename)
     return e;
 } */
 
-void mostra_pos(ESTADO *e, int pos, int *jog1, int *jog2)
+void mostra_pos(ESTADO *e, int pos, int *contador)
 {
-    int contador = 0;
+
     JOGADAS backup;
-    for (int i = 0; i <= pos; i++)
-    {
-        backup[i].jogador1 = e->jogadas[i].jogador1;
-        backup[i].jogador2 = e->jogadas[i].jogador2;
-    }
-    e->jogador_atual = 1;
-    e->num_jogadas = 1;
-    e->jogada = 0;
-    for (int l = 7; l <= 0; l--)
-        for (int c = 0; c <= 7; c++)
-        {
-            e->tab[c][l] = VAZIO;
-        }
-    e->tab[4][4] = BRANCA;
-    e->ultima_jogada.linha = 4;
-    e->ultima_jogada.coluna = 4;
-    for (int u = 0; u <= pos; u++)
-    {
-        jogar(e, backup[u].jogador1, jog1, jog2);
-        atualiza_jogadas(e);
-        jogar(e, backup[u].jogador2, jog1, jog2);
-        atualiza_jogadas(e);
-        contador++;
-        modifica_jogador_atual(e, &contador);
-    }
+    array_backup(e, &backup, pos);
+    put_jogador_atual(e, 1);
+    put_num_jogadas(e, 1);
+    put_jogada(e, pos);
+    empty_tabuleiro(e);
+    put_branca(e, 4, 4);
+    atualiza_ultima_jogada(e, 4, 4);
+    *contador = jogar_pos(e, &backup, pos);
     mostrar_tabuleiro(e);
 }
 
 int interpretador(ESTADO *e)
 {
-    int jog1 = 0, jog2 = 0, contador = 1, jogada_valida, movs_int[2];
+    int jog1 = 0, jog2 = 0, contador = 1, jogada_valida, movs_int[BUF_SIZE];
     char linha[BUF_SIZE], col[2], lin[2], exit[2], aux[2], aux1[2], filename[BUF_SIZE];
     while (!jog1 && !jog2)
     {
         printf("#%d  PL %d (%d) -> ", contador, obter_jogador_atual(e), get_jogada(e)); ///home/diogo/rastros/interface.c
         if (fgets(linha, BUF_SIZE, stdin) == NULL)
             return 0;
-        if (sscanf(linha, "%[Q||q]", exit) == 1)
+        else if (sscanf(linha, "%[Q||q]", exit) == 1)
             return 0;
-        if (sscanf(linha, "%[p]%[o]%[s] %d", aux, aux, aux, movs_int) == 4)
-            mostra_pos(e, movs_int[0], &jog1, &jog2);
-        if (sscanf(linha, "%[m]%[o]%[v]%[s]", aux, aux, aux, aux) == 4)
+        else if (sscanf(linha, "%[p]%[o]%[s] %d", aux, aux, aux, movs_int) == 4)
+            mostra_pos(e, movs_int[0], &contador);
+        else if (sscanf(linha, "%[m]%[o]%[v]%[s]", aux, aux, aux, aux) == 4)
             fdisplay_jogadas(stdout, e);
-        if (sscanf(linha, "%[g]%[r] %s", aux, aux1, filename) == 3)
+        else if (sscanf(linha, "%[g]%[r] %s", aux, aux1, filename) == 3)
             gravar(e, filename);
-        if (sscanf(linha, "%[r]%[d] %s", aux, aux1, filename) == 3)
+        else if (sscanf(linha, "%[r]%[d] %s", aux, aux1, filename) == 3)
             ler(e, filename);
-        if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2)
+        else if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2)
         {
             COORDENADA coord = {*col - 'a', *lin - '1'};
             jogada_valida = jogar(e, coord, &jog1, &jog2);
@@ -203,7 +186,7 @@ int interpretador(ESTADO *e)
             if (jogada_valida)
             {
                 contador++;
-                modifica_jogador_atual(e, &contador); //# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
+                modifica_jogador_atual(e, contador); //# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
             }
         }
         else
