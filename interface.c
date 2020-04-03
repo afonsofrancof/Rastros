@@ -146,14 +146,14 @@ void mostra_pos(ESTADO *e, int pos, int *contador)
 {
 
     JOGADAS backup;
-    array_backup(e, &backup, pos);
+    array_backup(e, backup, pos);
     put_jogador_atual(e, 1);
     put_num_jogadas(e, 1);
     put_jogada(e, pos);
     empty_tabuleiro(e);
     put_branca(e, 4, 4);
     atualiza_ultima_jogada(e, 4, 4);
-    *contador = jogar_pos(e, &backup, pos);
+    *contador = jogar_pos(e, backup, pos);
     mostrar_tabuleiro(e);
 }
 

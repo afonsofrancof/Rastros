@@ -318,15 +318,15 @@ void put_num_jogadas(ESTADO *e, int num_jogadas)
     e->num_jogadas = num_jogadas;
 }
 
-int jogar_pos(ESTADO *e, JOGADAS *backup, int pos)
+int jogar_pos(ESTADO *e, JOGADAS backup, int pos)
 {
     pos--;
     int contador = 1;
     for (int u = 0; u <= pos; u++)
     {
-        jogar(e, backup[u]->jogador1, 0, 0);
+        jogar(e, backup[u].jogador1, 0, 0);
         atualiza_jogadas(e);
-        jogar(e, backup[u]->jogador2, 0, 0);
+        jogar(e, backup[u].jogador2, 0, 0);
         atualiza_jogadas(e);
         contador++;
         modifica_jogador_atual(e, contador);
@@ -334,11 +334,11 @@ int jogar_pos(ESTADO *e, JOGADAS *backup, int pos)
     return contador;
 }
 
-void array_backup(ESTADO *e, JOGADAS *backup, int pos)
+void array_backup(ESTADO *e, JOGADAS backup, int pos)
 {
     for (int i = 0; i <= pos; i++)
     {
-        backup[i]->jogador1 = e->jogadas[i].jogador1;
-        backup[i]->jogador2 = e->jogadas[i].jogador2;
+        backup[i].jogador1 = e->jogadas[i].jogador1;
+        backup[i].jogador2 = e->jogadas[i].jogador2;
     }
 }

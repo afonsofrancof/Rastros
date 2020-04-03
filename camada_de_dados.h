@@ -88,8 +88,8 @@ void put_jogador_atual(ESTADO *e, int jog);
 
 void put_num_jogadas(ESTADO *e, int num_jogadas);
 
-int jogar_pos(ESTADO *e, JOGADAS *backup, int pos);
+int jogar_pos(ESTADO *e, JOGADAS backup, int pos);
 
-void array_backup(ESTADO *e, JOGADAS *backup, int pos);
+void array_backup(ESTADO *e, JOGADAS backup, int pos);
 
 #endif
