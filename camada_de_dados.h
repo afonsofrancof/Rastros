@@ -87,4 +87,8 @@ int jogar_pos(ESTADO *e, JOGADAS backup, int pos);
 
 void array_backup(ESTADO *e, JOGADAS backup, int pos);
 
+void ImprimeJogadas(ESTADO *e, int num_jogadas);
+
+void imprime_play(ESTADO *e, int n_jogada, int jogador);
+
 #endif

@@ -86,7 +86,7 @@ void gravar(ESTADO *e, char *filename)
     fclose(fp);
 }
 
-/* void ler(ESTADO *e, char *filename)
+void ler(ESTADO *e, char *filename)
 {
     FILE *fp;
     fp = fopen(filename, "r");
@@ -100,21 +100,26 @@ void gravar(ESTADO *e, char *filename)
         }
         l--;
         contador++;
-        for (contador = 8; contador >= 8 && buffer[i] != '\n'; contador++, i++)
+        if (contador >= 10 && buffer[i++])
         {
-            n_jogada = contador - 7;
+            n_jogada = contador - 10;
             col = buffer[4] - 'a';
-            lin = buffer[5] - '0';
-            le_e_escreve_jogadas(e, col, lin, n_jogada, 1);
+            lin = buffer[5] - '1';
+            le_e_escreve_jogadas(e, col, lin, n_jogada + 1, 1);
             col = buffer[7] - 'a';
-            lin = buffer[8] - '0';
-            le_e_escreve_jogadas(e, col, lin, n_jogada, 2);
+            lin = buffer[8] - '1';
+            le_e_escreve_jogadas(e, col, lin, n_jogada + 1, 2);
         }
     }
+    if (!buffer[7])
+        e->jogador_atual = 2;
+    else
+        e->jogador_atual = 1;
+    e->jogada = n_jogada + 2;
     fclose(fp);
     mostrar_tabuleiro(e);
-} */
-int ler(ESTADO *e, char *filename)
+}
+/* int ler(ESTADO *e, char *filename)
 {
     FILE *fp;
     putchar('2');
@@ -151,7 +156,7 @@ int ler(ESTADO *e, char *filename)
     fclose(fp);
     mostrar_tabuleiro(e);
     return contador;
-}
+} */
 
 void mostra_pos(ESTADO *e, int pos, int *contador)
 {
@@ -195,7 +200,7 @@ int interpretador(ESTADO *e)
         }
         else if (sscanf(linha, "%[r]%[d] %s", aux, aux1, filename) == 3)
         {
-            contador = ler(e, filename);
+            ler(e, filename);
             num_comandos++;
         }
         else if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2)

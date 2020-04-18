@@ -212,7 +212,6 @@ void armazena_jogada(ESTADO *e, COORDENADA c)
 void get_and_transforma_jogadas(ESTADO *e, int jog, int numero_da_jogada, char *coordenada)
 {
     int col, lin;
-    char col2;
     if (jog == 1)
     {
         col = e->jogadas[numero_da_jogada].jogador1.coluna;
@@ -223,8 +222,8 @@ void get_and_transforma_jogadas(ESTADO *e, int jog, int numero_da_jogada, char *
         col = e->jogadas[numero_da_jogada].jogador2.coluna;
         lin = e->jogadas[numero_da_jogada].jogador2.linha + 1;
     }
-    col2 = col + 'a';
-    coordenada[0] = col2;
+
+    coordenada[0] = col + 'a';
     coordenada[1] = lin + '0';
 }
 
@@ -269,15 +268,17 @@ void fdisplay_jogadas(FILE *fp, ESTADO *e)
     else
         num_jogadas = get_jogada(e);
     char coordenada_final[] = "a";
-    for (i = 1; i <= num_jogadas; i++)
+
+    for (i = 2; i <= num_jogadas + 1; i++)
     {
-        fprintf(fp, "%02d: ", i);
-        get_and_transforma_jogadas(e, 1, i, coordenada_final);
-        fprint_string(fp, coordenada_final);
-        get_and_transforma_jogadas(e, 2, i, coordenada_final);
-        fputc(' ', fp);
-        fprint_string(fp, coordenada_final);
-        fputc('\n', fp);
+        fprintf(fp, "%02d: ", i - 1);
+        imprime_play(e, i, 1);
+        putchar(' ');
+        if (!(i == num_jogadas + 1 && obter_jogador_atual(e) == 2))
+        {
+            imprime_play(e, i, 2);
+        }
+        putchar('\n');
     }
 }
 
@@ -328,5 +329,47 @@ void array_backup(ESTADO *e, JOGADAS backup, int pos)
     {
         backup[i].jogador1 = e->jogadas[i].jogador1;
         backup[i].jogador2 = e->jogadas[i].jogador2;
+    }
+}
+
+void ImprimeJogadas(ESTADO *e, int num_jogadas)
+{
+    int col, lin;
+    for (int i = 0; i <= num_jogadas; i++)
+    {
+        col = e->jogadas[i].jogador1.coluna;
+        lin = e->jogadas[i].jogador1.linha;
+        printf("Jog1 ");
+        printf("%c", col + 'a');
+        printf("%d", lin + 1);
+        putchar(' ');
+        putchar('|');
+        putchar(' ');
+        col = e->jogadas[i].jogador2.coluna;
+        lin = e->jogadas[i].jogador2.linha;
+        printf("Jog2 ");
+        printf("%c", col + 'a');
+        printf("%d", lin + 1);
+        putchar('\n');
+    }
+}
+
+void imprime_play(ESTADO *e, int n_jogada, int jogador)
+{
+    n_jogada--;
+    int col, lin;
+    if (jogador == 1)
+    {
+        col = e->jogadas[n_jogada].jogador1.coluna;
+        lin = e->jogadas[n_jogada].jogador1.linha;
+        printf("%c", col + 'a');
+        printf("%d", lin + 1);
+    }
+    else
+    {
+        col = e->jogadas[n_jogada].jogador2.coluna;
+        lin = e->jogadas[n_jogada].jogador2.linha;
+        printf("%c", col + 'a');
+        printf("%d", lin + 1);
     }
 }
