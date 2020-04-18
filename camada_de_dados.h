@@ -27,7 +27,6 @@ typedef struct
     CASA tab[8][8];
     COORDENADA ultima_jogada;
     JOGADAS jogadas;
-    int num_jogadas;
     int jogador_atual;
     int jogada;
 } ESTADO;
@@ -37,8 +36,6 @@ ESTADO *inicializar_estado();
 void empty_tabuleiro(ESTADO *e);
 
 int obter_jogador_atual(ESTADO *estado);
-
-int obter_numero_de_jogadas(ESTADO *estado);
 
 CASA obter_estado_casa(ESTADO *e, int c, int l);
 
@@ -85,8 +82,6 @@ void le_e_escreve_jogadas(ESTADO *e, int col, int lin, int n_jogada, int jog);
 void put_jogada(ESTADO *e, int jogada);
 
 void put_jogador_atual(ESTADO *e, int jog);
-
-void put_num_jogadas(ESTADO *e, int num_jogadas);
 
 int jogar_pos(ESTADO *e, JOGADAS backup, int pos);
 

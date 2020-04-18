@@ -75,16 +75,6 @@ void mostrar_tabuleiro_gr(FILE *fp, ESTADO *e)
         fputc('\n', fp);
     }
 }
-/*
-void mostrar_tabuleiro_gr(FILE *fp,ESTADO *e){
-    int c,l;
-    for(l=7;l>=0;l--){
-        for(c=0;c<=7;c++){
-            fprintf(fp,"%c",e->tab[c][l]);
-        }
-    }
-}
-*/
 
 void gravar(ESTADO *e, char *filename)
 {
@@ -96,7 +86,7 @@ void gravar(ESTADO *e, char *filename)
     fclose(fp);
 }
 
-void ler(ESTADO *e, char *filename)
+/* void ler(ESTADO *e, char *filename)
 {
     FILE *fp;
     fp = fopen(filename, "r");
@@ -123,24 +113,45 @@ void ler(ESTADO *e, char *filename)
     }
     fclose(fp);
     mostrar_tabuleiro(e);
-}
-
-/* ESTADO *inicializar_estado()
-{
-    ESTADO *e = (ESTADO *)malloc(sizeof(ESTADO));
-    e->jogador_atual = 1;
-    e->num_jogadas = 1;
-    e->jogada = 0;
-    for (int l = 7; l <= 0; l--)
-        for (int c = 0; c <= 7; c++)
-        {
-            e->tab[c][l] = VAZIO;
-        }
-    e->tab[4][4] = BRANCA;
-    e->ultima_jogada.linha = 4;
-    e->ultima_jogada.coluna = 4;
-    return e;
 } */
+int ler(ESTADO *e, char *filename)
+{
+    FILE *fp;
+    putchar('2');
+    fp = fopen(filename, "r");
+    char buffer[BUF_SIZE];
+    int col, lin, control = 0, i;
+    int contador = 1;
+    put_jogador_atual(e, 1);
+    put_jogada(e, 1);
+    empty_tabuleiro(e);
+    put_branca(e, 4, 4);
+    atualiza_ultima_jogada(e, 4, 4);
+    while (fgets(buffer, BUF_SIZE, fp) != NULL)
+    {
+        control++;
+        for (control = 8, i = 0; control >= 8 && buffer[i]; control++, i++)
+        {
+            col = buffer[4] - 'a';
+            lin = buffer[5] - '0';
+            COORDENADA cjog1 = {col, lin};
+            jogar(e, cjog1, 0, 0);
+            contador++;
+            atualiza_jogadas(e);
+            modifica_jogador_atual(e, contador);
+            col = buffer[7] - 'a';
+            lin = buffer[8] - '0';
+            COORDENADA cjog2 = {col, lin};
+            jogar(e, cjog2, 0, 0);
+            contador++;
+            atualiza_jogadas(e);
+            modifica_jogador_atual(e, contador);
+        }
+    }
+    fclose(fp);
+    mostrar_tabuleiro(e);
+    return contador;
+}
 
 void mostra_pos(ESTADO *e, int pos, int *contador)
 {
@@ -148,8 +159,7 @@ void mostra_pos(ESTADO *e, int pos, int *contador)
     JOGADAS backup;
     array_backup(e, backup, pos);
     put_jogador_atual(e, 1);
-    put_num_jogadas(e, 1);
-    put_jogada(e, pos);
+    put_jogada(e, 1);
     empty_tabuleiro(e);
     put_branca(e, 4, 4);
     atualiza_ultima_jogada(e, 4, 4);
@@ -159,32 +169,44 @@ void mostra_pos(ESTADO *e, int pos, int *contador)
 
 int interpretador(ESTADO *e)
 {
-    int jog1 = 0, jog2 = 0, contador = 1, jogada_valida, movs_int[BUF_SIZE];
+    int jog1 = 0, jog2 = 0, contador = 1, num_comandos = 1, jogada_valida, movs_int[BUF_SIZE];
     char linha[BUF_SIZE], col[2], lin[2], exit[2], aux[2], aux1[2], filename[BUF_SIZE];
     while (!jog1 && !jog2)
     {
-        printf("#%d  PL %d (%d) -> ", contador, obter_jogador_atual(e), get_jogada(e)); ///home/diogo/rastros/interface.c
+        printf("#%d  PL %d (%d) -> ", num_comandos, obter_jogador_atual(e), get_jogada(e)); ///home/diogo/rastros/interface.c
         if (fgets(linha, BUF_SIZE, stdin) == NULL)
             return 0;
         else if (sscanf(linha, "%[Q||q]", exit) == 1)
             return 0;
         else if (sscanf(linha, "%[p]%[o]%[s] %d", aux, aux, aux, movs_int) == 4)
+        {
             mostra_pos(e, movs_int[0], &contador);
+            num_comandos++;
+        }
         else if (sscanf(linha, "%[m]%[o]%[v]%[s]", aux, aux, aux, aux) == 4)
+        {
             fdisplay_jogadas(stdout, e);
+            num_comandos++;
+        }
         else if (sscanf(linha, "%[g]%[r] %s", aux, aux1, filename) == 3)
+        {
             gravar(e, filename);
+            num_comandos++;
+        }
         else if (sscanf(linha, "%[r]%[d] %s", aux, aux1, filename) == 3)
-            ler(e, filename);
+        {
+            contador = ler(e, filename);
+            num_comandos++;
+        }
         else if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2)
         {
+            num_comandos++;
             COORDENADA coord = {*col - 'a', *lin - '1'};
             jogada_valida = jogar(e, coord, &jog1, &jog2);
             mostrar_tabuleiro(e);
             if (jogada_valida)
-                atualiza_jogadas(e);
-            if (jogada_valida)
             {
+                atualiza_jogadas(e); //alterado
                 contador++;
                 modifica_jogador_atual(e, contador); //# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
             }

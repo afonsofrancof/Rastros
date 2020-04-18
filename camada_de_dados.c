@@ -8,8 +8,7 @@ ESTADO *inicializar_estado()
 {
     ESTADO *e = (ESTADO *)malloc(sizeof(ESTADO));
     e->jogador_atual = 1;
-    e->num_jogadas = 1;
-    e->jogada = 0;
+    e->jogada = 1;
     for (int l = 7; l >= 0; l--)
         for (int c = 0; c <= 7; c++)
         {
@@ -37,13 +36,6 @@ int obter_jogador_atual(ESTADO *estado)
     int j;
     j = estado->jogador_atual;
     return j;
-}
-
-int obter_numero_de_jogadas(ESTADO *estado)
-{
-    int n;
-    n = estado->num_jogadas;
-    return n;
 }
 
 CASA obter_estado_casa(ESTADO *estado, int c, int l)
@@ -264,7 +256,7 @@ void display_jogadas(ESTADO *e){
         get_and_transforma_jogadas(e,2,i,coordenada_final);
         putchar(' ');
         print_string(coordenada_final);
-        putchar('\n');
+        putchar('\');
     }
 }
 */
@@ -277,7 +269,7 @@ void fdisplay_jogadas(FILE *fp, ESTADO *e)
     else
         num_jogadas = get_jogada(e);
     char coordenada_final[] = "a";
-    for (i = 0; i <= num_jogadas; i++)
+    for (i = 1; i <= num_jogadas; i++)
     {
         fprintf(fp, "%02d: ", i);
         get_and_transforma_jogadas(e, 1, i, coordenada_final);
@@ -313,19 +305,15 @@ void put_jogador_atual(ESTADO *e, int jog)
     e->jogador_atual = jog;
 }
 
-void put_num_jogadas(ESTADO *e, int num_jogadas)
-{
-    e->num_jogadas = num_jogadas;
-}
-
 int jogar_pos(ESTADO *e, JOGADAS backup, int pos)
 {
-    pos--;
     int contador = 1;
-    for (int u = 0; u <= pos; u++)
+    for (int u = 1; u <= pos; u++)
     {
         jogar(e, backup[u].jogador1, 0, 0);
         atualiza_jogadas(e);
+        contador++;
+        modifica_jogador_atual(e, contador);
         jogar(e, backup[u].jogador2, 0, 0);
         atualiza_jogadas(e);
         contador++;
