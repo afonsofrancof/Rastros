@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "camada_de_dados.h"
 #include "interface.h"
 #include "logica.h"
+#include "listas.h"
 #define BUF_SIZE 1024
 
 void mostrar_tabuleiro(ESTADO *e)
@@ -119,44 +121,6 @@ void ler(ESTADO *e, char *filename)
     fclose(fp);
     mostrar_tabuleiro(e);
 }
-/* int ler(ESTADO *e, char *filename)
-{
-    FILE *fp;
-    putchar('2');
-    fp = fopen(filename, "r");
-    char buffer[BUF_SIZE];
-    int col, lin, control = 0, i;
-    int contador = 1;
-    put_jogador_atual(e, 1);
-    put_jogada(e, 1);
-    empty_tabuleiro(e);
-    put_branca(e, 4, 4);
-    atualiza_ultima_jogada(e, 4, 4);
-    while (fgets(buffer, BUF_SIZE, fp) != NULL)
-    {
-        control++;
-        for (control = 8, i = 0; control >= 8 && buffer[i]; control++, i++)
-        {
-            col = buffer[4] - 'a';
-            lin = buffer[5] - '0';
-            COORDENADA cjog1 = {col, lin};
-            jogar(e, cjog1, 0, 0);
-            contador++;
-            atualiza_jogadas(e);
-            modifica_jogador_atual(e, contador);
-            col = buffer[7] - 'a';
-            lin = buffer[8] - '0';
-            COORDENADA cjog2 = {col, lin};
-            jogar(e, cjog2, 0, 0);
-            contador++;
-            atualiza_jogadas(e);
-            modifica_jogador_atual(e, contador);
-        }
-    }
-    fclose(fp);
-    mostrar_tabuleiro(e);
-    return contador;
-} */
 
 void mostra_pos(ESTADO *e, int pos, int *contador)
 {
@@ -178,9 +142,18 @@ int interpretador(ESTADO *e)
     char linha[BUF_SIZE], col[2], lin[2], exit[2], aux[2], aux1[2], filename[BUF_SIZE];
     while (!jog1 && !jog2)
     {
-        printf("#%d  PL %d (%d) -> ", num_comandos, obter_jogador_atual(e), get_jogada(e)); ///home/diogo/rastros/interface.c
+        printf("#%d  PL %d (%d) -> ", num_comandos, obter_jogador_atual(e), get_jogada(e));
         if (fgets(linha, BUF_SIZE, stdin) == NULL)
             return 0;
+        else if (sscanf(linha, "%[j]%[o]%[g]", aux, aux, aux) == 3)
+        {
+            jog(e);
+            mostrar_tabuleiro(e);
+            atualiza_jogadas(e); //alterado
+            contador++;
+            modifica_jogador_atual(e, contador); //# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
+            num_comandos++;
+        }
         else if (sscanf(linha, "%[Q||q]", exit) == 1)
             return 0;
         else if (sscanf(linha, "%[p]%[o]%[s] %d", aux, aux, aux, movs_int) == 4)

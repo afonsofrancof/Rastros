@@ -89,6 +89,10 @@ void array_backup(ESTADO *e, JOGADAS backup, int pos);
 
 void ImprimeJogadas(ESTADO *e, int num_jogadas);
 
-void imprime_play(ESTADO *e, int n_jogada, int jogador);
+void imprime_play(ESTADO *e, int n_jogada, int jogador, FILE *fp);
+
+int obter_coluna_ult_jogada(ESTADO *e);
+
+int obter_linha_ult_jogada(ESTADO *e);
 
 #endif

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "camada_de_dados.h"
 #include "logica.h"
 

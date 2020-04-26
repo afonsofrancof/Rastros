@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "camada_de_dados.h"
 #include "logica.h"
 
@@ -272,13 +273,13 @@ void fdisplay_jogadas(FILE *fp, ESTADO *e)
     for (i = 2; i <= num_jogadas + 1; i++)
     {
         fprintf(fp, "%02d: ", i - 1);
-        imprime_play(e, i, 1);
-        putchar(' ');
+        imprime_play(e, i, 1, fp);
+        fputc(' ', fp);
         if (!(i == num_jogadas + 1 && obter_jogador_atual(e) == 2))
         {
-            imprime_play(e, i, 2);
+            imprime_play(e, i, 2, fp);
         }
-        putchar('\n');
+        fputc('\n', fp);
     }
 }
 
@@ -354,7 +355,7 @@ void ImprimeJogadas(ESTADO *e, int num_jogadas)
     }
 }
 
-void imprime_play(ESTADO *e, int n_jogada, int jogador)
+void imprime_play(ESTADO *e, int n_jogada, int jogador, FILE *fp)
 {
     n_jogada--;
     int col, lin;
@@ -362,14 +363,23 @@ void imprime_play(ESTADO *e, int n_jogada, int jogador)
     {
         col = e->jogadas[n_jogada].jogador1.coluna;
         lin = e->jogadas[n_jogada].jogador1.linha;
-        printf("%c", col + 'a');
-        printf("%d", lin + 1);
+        fprintf(fp, "%c", col + 'a');
+        fprintf(fp, "%d", lin + 1);
     }
     else
     {
         col = e->jogadas[n_jogada].jogador2.coluna;
         lin = e->jogadas[n_jogada].jogador2.linha;
-        printf("%c", col + 'a');
-        printf("%d", lin + 1);
+        fprintf(fp, "%c", col + 'a');
+        fprintf(fp, "%d", lin + 1);
     }
+}
+
+int obter_coluna_ult_jogada(ESTADO *e)
+{
+    return (e->ultima_jogada.coluna);
+}
+int obter_linha_ult_jogada(ESTADO *e)
+{
+    return (e->ultima_jogada.linha);
 }

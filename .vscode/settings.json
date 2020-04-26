@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "camada_de_dados.h": "c"
+        "camada_de_dados.h": "c",
+        "listas.h": "c",
+        "string.h": "c",
+        "interface.h": "c"
     }
 }
