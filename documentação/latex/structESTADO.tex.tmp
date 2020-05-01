@@ -1,0 +1,29 @@
+\hypertarget{structESTADO}{}\section{Referência à estrutura E\+S\+T\+A\+DO}
+\label{structESTADO}\index{E\+S\+T\+A\+DO@{E\+S\+T\+A\+DO}}
+
+
+Diagrama de colaboração para E\+S\+T\+A\+DO\+:
+% FIG 0
+\subsection*{Atributos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structESTADO_ab56f0f1be16954d3768b4174d14c087d}\label{structESTADO_ab56f0f1be16954d3768b4174d14c087d}} 
+C\+A\+SA {\bfseries tab} \mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\item 
+\mbox{\Hypertarget{structESTADO_a4896a5c5c1f40b43fb795623327e3f47}\label{structESTADO_a4896a5c5c1f40b43fb795623327e3f47}} 
+\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} {\bfseries ultima\+\_\+jogada}
+\item 
+\mbox{\Hypertarget{structESTADO_afae43b87a488fad0f2b56a18bad31d18}\label{structESTADO_afae43b87a488fad0f2b56a18bad31d18}} 
+J\+O\+G\+A\+D\+AS {\bfseries jogadas}
+\item 
+\mbox{\Hypertarget{structESTADO_a5dd28e2e68b7aef2b6b7ea88e02eff58}\label{structESTADO_a5dd28e2e68b7aef2b6b7ea88e02eff58}} 
+int {\bfseries jogador\+\_\+atual}
+\item 
+\mbox{\Hypertarget{structESTADO_a9903130e4f5389b1e17eeb7c3260e21a}\label{structESTADO_a9903130e4f5389b1e17eeb7c3260e21a}} 
+int {\bfseries jogada}
+\end{DoxyCompactItemize}
+
+
+A documentação para esta estrutura foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{camada__de__dados_8h}{camada\+\_\+de\+\_\+dados.\+h}\end{DoxyCompactItemize}

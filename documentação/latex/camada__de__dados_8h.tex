@@ -1,0 +1,152 @@
+\hypertarget{camada__de__dados_8h}{}\section{Referência ao ficheiro camada\+\_\+de\+\_\+dados.\+h}
+\label{camada__de__dados_8h}\index{camada\+\_\+de\+\_\+dados.\+h@{camada\+\_\+de\+\_\+dados.\+h}}
+\subsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}
+\item 
+struct \hyperlink{structJOGADA}{J\+O\+G\+A\+DA}
+\item 
+struct \hyperlink{structESTADO}{E\+S\+T\+A\+DO}
+\end{DoxyCompactItemize}
+\subsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a94c221d29a1760f008b7834093259b7d}\label{camada__de__dados_8h_a94c221d29a1760f008b7834093259b7d}} 
+typedef \hyperlink{structJOGADA}{J\+O\+G\+A\+DA} {\bfseries J\+O\+G\+A\+D\+AS}\mbox{[}32\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Enumerações}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_aba91601f16d4c485b2d9b8c429f27039}\label{camada__de__dados_8h_aba91601f16d4c485b2d9b8c429f27039}} 
+enum {\bfseries C\+A\+SA} \{ {\bfseries V\+A\+Z\+IO} = \textquotesingle{}.\textquotesingle{}, 
+{\bfseries B\+R\+A\+N\+CA} = \textquotesingle{}$\ast$\textquotesingle{}, 
+{\bfseries P\+R\+E\+TA} = \textquotesingle{}\#\textquotesingle{}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$ \hyperlink{camada__de__dados_8h_a7e0c7e26fb685d9ab501e19b05e6954f}{inicializar\+\_\+estado} ()
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a0609098f15b2ec0d7c994f7ea3667455}\label{camada__de__dados_8h_a0609098f15b2ec0d7c994f7ea3667455}} 
+void {\bfseries empty\+\_\+tabuleiro} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}\label{camada__de__dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}} 
+int {\bfseries obter\+\_\+jogador\+\_\+atual} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_af07a315536e57ea96b16c3e232e9eb54}\label{camada__de__dados_8h_af07a315536e57ea96b16c3e232e9eb54}} 
+C\+A\+SA {\bfseries obter\+\_\+estado\+\_\+casa} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int c, int l)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_abac41dceaa2551d1def3f4fbb06b0758}\label{camada__de__dados_8h_abac41dceaa2551d1def3f4fbb06b0758}} 
+int {\bfseries is\+\_\+near\+\_\+branca} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, int colatual, int linatual)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a55106112fc732be07081af171cd0ee29}\label{camada__de__dados_8h_a55106112fc732be07081af171cd0ee29}} 
+void {\bfseries put\+\_\+branca} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, int col, int lin)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_aad79e0ccf12ac3d67684bde2f2e4ed40}\label{camada__de__dados_8h_aad79e0ccf12ac3d67684bde2f2e4ed40}} 
+void {\bfseries put\+\_\+preta} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a6bf7f42979ba1ed2a8046535ff25ccb1}\label{camada__de__dados_8h_a6bf7f42979ba1ed2a8046535ff25ccb1}} 
+void {\bfseries atualiza\+\_\+ultima\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, int col, int lin)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a1f4df241c1ad82e53a8a13cd6fcb9058}\label{camada__de__dados_8h_a1f4df241c1ad82e53a8a13cd6fcb9058}} 
+int {\bfseries verifica\+\_\+preta} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, int col, int lin)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_adc98a40a697ff1c913c883b907bc9b89}\label{camada__de__dados_8h_adc98a40a697ff1c913c883b907bc9b89}} 
+int {\bfseries pode\+\_\+mover} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, int col, int lin)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_af0af0ba90136939330c5edf0ff4d7e3a}\label{camada__de__dados_8h_af0af0ba90136939330c5edf0ff4d7e3a}} 
+void {\bfseries aumenta\+\_\+jogadas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a1c048d420c981c6d25777428acb43448}\label{camada__de__dados_8h_a1c048d420c981c6d25777428acb43448}} 
+void {\bfseries modifica\+\_\+jogador\+\_\+atual} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, int contador)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a1a7934f5355f2ca33164b8293752cf6e}\label{camada__de__dados_8h_a1a7934f5355f2ca33164b8293752cf6e}} 
+int {\bfseries get\+\_\+coluna\+\_\+anterior} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a32c50b3f634081b92875d9618d1aec9c}\label{camada__de__dados_8h_a32c50b3f634081b92875d9618d1aec9c}} 
+int {\bfseries get\+\_\+linha\+\_\+anterior} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a84c6048afd16375832682a6149460797}\label{camada__de__dados_8h_a84c6048afd16375832682a6149460797}} 
+int {\bfseries get\+\_\+coluna} (\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} coord)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a75b3b7a34bef41ea011c00483af81490}\label{camada__de__dados_8h_a75b3b7a34bef41ea011c00483af81490}} 
+int {\bfseries get\+\_\+linha} (\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} coord)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_aa58268ae314656b882a324018afe813c}\label{camada__de__dados_8h_aa58268ae314656b882a324018afe813c}} 
+int {\bfseries get\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a17a92ae4131164c13acc9e8e2ce134da}\label{camada__de__dados_8h_a17a92ae4131164c13acc9e8e2ce134da}} 
+int {\bfseries atualiza\+\_\+jogadas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a42ebae9f26aa58c0f2dfdbd3838c2240}\label{camada__de__dados_8h_a42ebae9f26aa58c0f2dfdbd3838c2240}} 
+void {\bfseries set\+\_\+casa} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int c, int l, C\+A\+SA casa)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_afb68feddf0652a35283197eb2282c601}\label{camada__de__dados_8h_afb68feddf0652a35283197eb2282c601}} 
+void {\bfseries teste} (C\+A\+SA casa)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a52c1dbe8bebf17fb7245b067339f15a7}\label{camada__de__dados_8h_a52c1dbe8bebf17fb7245b067339f15a7}} 
+void {\bfseries armazena\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_aa6cc6f17801aa2377318b3d34b35b8fa}\label{camada__de__dados_8h_aa6cc6f17801aa2377318b3d34b35b8fa}} 
+void {\bfseries display\+\_\+jogadas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a6a197eba64ba1a081810b849df45b170}\label{camada__de__dados_8h_a6a197eba64ba1a081810b849df45b170}} 
+void {\bfseries fdisplay\+\_\+jogadas} (F\+I\+LE $\ast$fp, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a25048b9e45970f84703c6ba286e8402c}\label{camada__de__dados_8h_a25048b9e45970f84703c6ba286e8402c}} 
+void {\bfseries le\+\_\+e\+\_\+escreve\+\_\+jogadas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int col, int lin, int n\+\_\+jogada, int jog)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a54ce140d981c4c0610846f6f83f3bd84}\label{camada__de__dados_8h_a54ce140d981c4c0610846f6f83f3bd84}} 
+void {\bfseries put\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int jogada)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a90d936573d336b4e55748f662ad50480}\label{camada__de__dados_8h_a90d936573d336b4e55748f662ad50480}} 
+void {\bfseries put\+\_\+jogador\+\_\+atual} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int jog)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a2369b75386a716e63a53ffbbbf0c6528}\label{camada__de__dados_8h_a2369b75386a716e63a53ffbbbf0c6528}} 
+int {\bfseries jogar\+\_\+pos} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, J\+O\+G\+A\+D\+AS backup, int pos)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a011a5fcf9286d6382fbdaf847c8e47df}\label{camada__de__dados_8h_a011a5fcf9286d6382fbdaf847c8e47df}} 
+void {\bfseries array\+\_\+backup} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, J\+O\+G\+A\+D\+AS backup, int pos)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_af1d90e64ce059a7adb4e2c7d84b1cd98}\label{camada__de__dados_8h_af1d90e64ce059a7adb4e2c7d84b1cd98}} 
+void {\bfseries Imprime\+Jogadas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int num\+\_\+jogadas)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_aa0414fee0f410f904a623fdd4dcb0fc3}\label{camada__de__dados_8h_aa0414fee0f410f904a623fdd4dcb0fc3}} 
+void {\bfseries imprime\+\_\+play} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int n\+\_\+jogada, int jogador, F\+I\+LE $\ast$fp)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a5a30d51f47a4a4c64112a7bc29437f3d}\label{camada__de__dados_8h_a5a30d51f47a4a4c64112a7bc29437f3d}} 
+int {\bfseries obter\+\_\+coluna\+\_\+ult\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_ab7bc46bbcb9ae4166cc4f1b351714efe}\label{camada__de__dados_8h_ab7bc46bbcb9ae4166cc4f1b351714efe}} 
+int {\bfseries obter\+\_\+linha\+\_\+ult\+\_\+jogada} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_af8e1e3112fcc3ea2c118cb5833ebc6bf}\label{camada__de__dados_8h_af8e1e3112fcc3ea2c118cb5833ebc6bf}} 
+\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} $\ast$ {\bfseries selectcasas} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structnodo}{llig} lista, int $\ast$tamanho)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_ada9feef24d3b13d0e5ed73c6fb10e11c}\label{camada__de__dados_8h_ada9feef24d3b13d0e5ed73c6fb10e11c}} 
+\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} $\ast$ {\bfseries devolveindice} (\hyperlink{structnodo}{llig} lista, int indice)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_aa0fcaf956e4692e4c05e8744bd9b04e5}\label{camada__de__dados_8h_aa0fcaf956e4692e4c05e8744bd9b04e5}} 
+float {\bfseries distanciacasas} (\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} $\ast$coord, int jog)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a9dfbc982d23a619e36575d8e7ec8e41c}\label{camada__de__dados_8h_a9dfbc982d23a619e36575d8e7ec8e41c}} 
+void {\bfseries jog} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+\mbox{\Hypertarget{camada__de__dados_8h_a12475b48973cf7cb04ca92b65aa5301e}\label{camada__de__dados_8h_a12475b48973cf7cb04ca92b65aa5301e}} 
+\hyperlink{structnodo}{llig} {\bfseries armazena\+\_\+posicoes} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, \hyperlink{structnodo}{llig} lista, int $\ast$tamanho)
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Estado e funções que o manipulam 
+
+\subsection{Documentação das funções}
+\mbox{\Hypertarget{camada__de__dados_8h_a7e0c7e26fb685d9ab501e19b05e6954f}\label{camada__de__dados_8h_a7e0c7e26fb685d9ab501e19b05e6954f}} 
+\index{camada\+\_\+de\+\_\+dados.\+h@{camada\+\_\+de\+\_\+dados.\+h}!inicializar\+\_\+estado@{inicializar\+\_\+estado}}
+\index{inicializar\+\_\+estado@{inicializar\+\_\+estado}!camada\+\_\+de\+\_\+dados.\+h@{camada\+\_\+de\+\_\+dados.\+h}}
+\subsubsection{\texorpdfstring{inicializar\+\_\+estado()}{inicializar\_estado()}}
+{\footnotesize\ttfamily \hyperlink{structESTADO}{E\+S\+T\+A\+DO}$\ast$ inicializar\+\_\+estado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+ção que inicializa o estado do jogo 

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include "camada_de_dados.h"
+#include "listas.h"
 #include "logica.h"
 
 ESTADO *inicializar_estado()
@@ -21,6 +22,8 @@ ESTADO *inicializar_estado()
     return e;
 }
 
+//Função que esvazia o tabuleiro
+
 void empty_tabuleiro(ESTADO *e)
 {
     for (int l = 7; l >= 0; l--)
@@ -32,6 +35,8 @@ void empty_tabuleiro(ESTADO *e)
     }
 }
 
+//Função que obtem o jogador atual
+
 int obter_jogador_atual(ESTADO *estado)
 {
     int j;
@@ -39,12 +44,16 @@ int obter_jogador_atual(ESTADO *estado)
     return j;
 }
 
+//Função que obtem a casa de uma certa posição
+
 CASA obter_estado_casa(ESTADO *estado, int c, int l)
 {
     int casa;
     casa = estado->tab[c][l];
     return casa;
 }
+
+//Função que verifica se as coordenadas introduzidas estão a uma certa distância da peça branca
 
 int is_near_branca(ESTADO *estado, int colatual, int linatual)
 {
@@ -58,10 +67,14 @@ int is_near_branca(ESTADO *estado, int colatual, int linatual)
     return ans;
 }
 
+//Função que coloca a peça branca nas coordenadas do input
+
 void put_branca(ESTADO *estado, int col, int lin)
 {
     estado->tab[col][lin] = BRANCA;
 }
+
+//Função que coloca uma peça preta nas coordenadas da jogada anterior
 
 void put_preta(ESTADO *estado)
 {
@@ -71,11 +84,15 @@ void put_preta(ESTADO *estado)
     estado->tab[col][lin] = PRETA;
 }
 
+//Função que atualiza a ultima jogada para a jogada que acabou de ser feita
+
 void atualiza_ultima_jogada(ESTADO *estado, int col, int lin)
 {
     estado->ultima_jogada.coluna = col;
     estado->ultima_jogada.linha = lin;
 }
+
+//Função que verifica se a peça nas coordenadas passadas no input é preta
 
 int verifica_preta(ESTADO *estado, int col, int lin)
 {
@@ -84,6 +101,8 @@ int verifica_preta(ESTADO *estado, int col, int lin)
         ans = 1;
     return ans;
 }
+
+//Função que determina se o jogador se pode mover tendo em conta todos os possíveis obstáculos como os cantos do tabuleiro e a existencia de peças pretas no caminho.
 
 int pode_mover(ESTADO *estado, int col, int lin)
 {
@@ -112,6 +131,8 @@ int pode_mover(ESTADO *estado, int col, int lin)
     return ans;
 }
 
+//Função que modifica o jogador atual
+
 void modifica_jogador_atual(ESTADO *estado, int contador)
 {
     if (contador == 1)
@@ -125,12 +146,16 @@ void modifica_jogador_atual(ESTADO *estado, int contador)
     }
 }
 
+//Função que obtem a coluna anterior através do estado
+
 int get_coluna_anterior(ESTADO *estado)
 {
     int a;
     a = estado->ultima_jogada.coluna;
     return a;
 }
+
+//Função que obtem a linha anterior através do estado
 
 int get_linha_anterior(ESTADO *estado)
 {
@@ -139,12 +164,16 @@ int get_linha_anterior(ESTADO *estado)
     return a;
 }
 
+//Função que obtem a coluna
+
 int get_coluna(COORDENADA coord)
 {
     int a;
     a = coord.coluna;
     return a;
 }
+
+//Função que obtem a linha
 
 int get_linha(COORDENADA coord)
 {
@@ -153,12 +182,16 @@ int get_linha(COORDENADA coord)
     return a;
 }
 
+//Função que obtem a jogada
+
 int get_jogada(ESTADO *estado)
 {
     int a;
     a = estado->jogada;
     return a;
 }
+
+//Função que atualiza o número de jogadas através dependendo do jogador atual
 
 int atualiza_jogadas(ESTADO *estado)
 {
@@ -167,6 +200,8 @@ int atualiza_jogadas(ESTADO *estado)
         estado->jogada++;
     return get_jogada(estado);
 }
+
+//Função que analiza o tabuleiro imprimido e adiciona a informação que recebe sobre as peças
 
 void set_casa(ESTADO *e, int c, int l, CASA casa)
 {
@@ -185,6 +220,8 @@ void set_casa(ESTADO *e, int c, int l, CASA casa)
         break;
     }
 }
+/*
+//teste
 
 void teste(CASA casa)
 {
@@ -202,6 +239,10 @@ void teste(CASA casa)
     }
 }
 
+*/
+
+//Função que armazena no array jogadas[32] as jogadas à medida em que são feitas
+
 void armazena_jogada(ESTADO *e, COORDENADA c)
 {
     if (obter_jogador_atual(e) == 1)
@@ -209,6 +250,8 @@ void armazena_jogada(ESTADO *e, COORDENADA c)
     else
         e->jogadas[get_jogada(e)].jogador2 = c;
 }
+
+//
 
 void get_and_transforma_jogadas(ESTADO *e, int jog, int numero_da_jogada, char *coordenada)
 {
@@ -228,14 +271,16 @@ void get_and_transforma_jogadas(ESTADO *e, int jog, int numero_da_jogada, char *
     coordenada[1] = lin + '0';
 }
 
+/*
 void print_string(char *string)
 {
     for (int i = 0; string[i]; i++)
     {
         putchar(string[i]);
     }
-}
+}*/
 
+/*
 void fprint_string(FILE *fp, char *string)
 {
     for (int i = 0; string[i]; i++)
@@ -243,6 +288,7 @@ void fprint_string(FILE *fp, char *string)
         fputc(string[i], fp);
     }
 }
+*/
 /*
 void display_jogadas(ESTADO *e){
     int i,num_jogadas;
@@ -260,6 +306,8 @@ void display_jogadas(ESTADO *e){
     }
 }
 */
+
+//Função que imprime as jogadas efetuadas até aquela etapa do jogo, com os repetivos números das jogadas
 
 void fdisplay_jogadas(FILE *fp, ESTADO *e)
 {
@@ -297,15 +345,21 @@ void le_e_escreve_jogadas(ESTADO *e, int col, int lin, int n_jogada, int jog)
     }
 }
 
+//Função que vai ao estado e introduz o número de jogadas passado no input
+
 void put_jogada(ESTADO *e, int jogada)
 {
     e->jogada = jogada;
 }
 
+//Função que vai ao estado e introduz o jogador atual passado no input
+
 void put_jogador_atual(ESTADO *e, int jog)
 {
     e->jogador_atual = jog;
 }
+
+//Função que efetua todas as jogadas existentes no array backup
 
 int jogar_pos(ESTADO *e, JOGADAS backup, int pos)
 {
@@ -382,4 +436,133 @@ int obter_coluna_ult_jogada(ESTADO *e)
 int obter_linha_ult_jogada(ESTADO *e)
 {
     return (e->ultima_jogada.linha);
+}
+
+COORDENADA *selectcasas(ESTADO *e, llig lista, int *tamanho)
+{
+    int jog = obter_jogador_atual(e);
+    float save[8];
+    COORDENADA *coord = malloc(sizeof(listamalloc));
+    llig temp;
+    temp = malloc(sizeof(listamalloc));
+    temp = lista;
+    for (int i = 0; i < (*tamanho); i++)
+    {
+        coord = temp->head;
+        save[i] = distanciacasas(coord, jog);
+        temp = temp->tail;
+    }
+    int menorindice = menorelem(save, tamanho);
+    COORDENADA *coordfinal = malloc(sizeof(listamalloc));
+    coordfinal = devolveindice(lista, menorindice);
+    return coordfinal;
+}
+
+void jog(ESTADO *e)
+{
+    int tamanho = 0;
+    llig lista;
+    lista = criar_lista();
+    lista = armazena_posicoes(e, lista, &tamanho);
+    COORDENADA *posicao = malloc(sizeof(listamalloc));
+    posicao = selectcasas(e, lista, &tamanho);
+    COORDENADA coord = {posicao->coluna, posicao->linha};
+    jogar(e, coord, 0, 0);
+}
+
+COORDENADA *devolveindice(llig lista, int indice) //[2,3,1,4,2,4,6] 2
+{
+    llig temp;
+    temp = malloc(sizeof(listamalloc));
+    temp = lista;
+    for (int i = 0; i < indice; i++)
+    {
+        temp = temp->tail;
+    }
+    COORDENADA *coord = malloc(sizeof(listamalloc));
+    coord = (temp->head);
+    return coord;
+}
+
+float distanciacasas(COORDENADA *coord, int jog)
+{
+    int catetox, catetoy;
+
+    if (jog == 1)
+    {
+        catetox = coord->coluna;
+        catetoy = coord->linha;
+    }
+    else
+    {
+        catetox = 7 - coord->coluna;
+        catetoy = 7 - coord->linha;
+    }
+    float dist = sqrt((catetox ^ 2) + (catetoy ^ 2));
+    return dist;
+}
+
+llig armazena_posicoes(ESTADO *e, llig lista, int *tamanho)
+{
+    int col, lin;
+    *tamanho = 0;
+    COORDENADA coord;
+    col = obter_coluna_ult_jogada(e);
+    lin = obter_linha_ult_jogada(e);
+    if ((col - 1 >= 0 && lin + 1 <= 7) && !verifica_preta(e, col - 1, lin + 1))
+    {
+        COORDENADA coord = {col - 1, lin + 1};
+        lista = insere_cabeca(lista, aloca_coord(coord));
+        (*tamanho)++;
+    }
+    if ((lin + 1 <= 7) && !verifica_preta(e, col, lin + 1))
+    {
+        coord.coluna = col;
+        coord.linha = lin + 1;
+        lista = insere_cabeca(lista, aloca_coord(coord));
+        (*tamanho)++;
+    }
+    if ((col + 1 <= 7 && lin + 1 <= 7) && !verifica_preta(e, col + 1, lin + 1))
+    {
+        coord.coluna = col + 1;
+        coord.linha = lin + 1;
+        lista = insere_cabeca(lista, aloca_coord(coord));
+        (*tamanho)++;
+    }
+    if ((col - 1 >= 0 && lin - 1 >= 0) && !verifica_preta(e, col - 1, lin - 1))
+    {
+        coord.coluna = col - 1;
+        coord.linha = lin - 1;
+        lista = insere_cabeca(lista, aloca_coord(coord));
+        (*tamanho)++;
+    }
+    if ((lin - 1 >= 0) && !verifica_preta(e, col, lin - 1))
+    {
+        coord.coluna = col;
+        coord.linha = lin - 1;
+        lista = insere_cabeca(lista, aloca_coord(coord));
+        (*tamanho)++;
+    }
+    if ((col + 1 <= 7 && lin - 1 >= 0) && !verifica_preta(e, col + 1, lin - 1))
+    {
+        coord.coluna = col + 1;
+        coord.linha = lin - 1;
+        lista = insere_cabeca(lista, aloca_coord(coord));
+        (*tamanho)++;
+    }
+    if ((col - 1 >= 0) && !verifica_preta(e, col - 1, lin))
+    {
+        coord.coluna = col - 1;
+        coord.linha = lin;
+        lista = insere_cabeca(lista, aloca_coord(coord));
+        (*tamanho)++;
+    }
+    if ((col + 1 <= 7) && !verifica_preta(e, col + 1, lin))
+    {
+        coord.coluna = col + 1;
+        coord.linha = lin;
+        lista = insere_cabeca(lista, aloca_coord(coord));
+        (*tamanho)++;
+    }
+    return lista;
 }

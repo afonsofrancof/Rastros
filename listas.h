@@ -22,14 +22,6 @@ int lista_esta_vazia(llig L);
 void imprimellig(llig l);
 llig armazena_posicoes(ESTADO *e, llig lista, int *tamanho);
 
-COORDENADA *selectcasas(ESTADO *e, llig lista, int *tamanho);
-
-COORDENADA *devolveindice(llig lista, int indice);
-
-float distanciacasas(COORDENADA *coord, int jog);
-
 int menorelem(float *save, int *tamanho);
-
-void jog(ESTADO *e);
 
 #endif

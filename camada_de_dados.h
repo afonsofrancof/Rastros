@@ -30,6 +30,14 @@ typedef struct
     int jogador_atual;
     int jogada;
 } ESTADO;
+/**
+@file camada_de_dados.h 
+Estado e funções que o manipulam
+*/
+
+/**
+ \Função que inicializa o estado do jogo
+*/
 
 ESTADO *inicializar_estado();
 
@@ -94,5 +102,15 @@ void imprime_play(ESTADO *e, int n_jogada, int jogador, FILE *fp);
 int obter_coluna_ult_jogada(ESTADO *e);
 
 int obter_linha_ult_jogada(ESTADO *e);
+
+COORDENADA *selectcasas(ESTADO *e, llig lista, int *tamanho);
+
+COORDENADA *devolveindice(llig lista, int indice);
+
+float distanciacasas(COORDENADA *coord, int jog);
+
+void jog(ESTADO *e);
+
+llig armazena_posicoes(ESTADO *e, llig lista, int *tamanho);
 
 #endif
