@@ -114,7 +114,7 @@ int interpretador(ESTADO *e)
         {
             jogRandom(e, &jog1, &jog2);
             mostrar_tabuleiro(e);
-            atualiza_jogadas(e); //alterado
+            atualiza_jogadas(e);
             contador++;
             modifica_jogador_atual(e, contador); //# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
             num_comandos++;
