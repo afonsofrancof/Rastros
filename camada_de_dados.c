@@ -2,9 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "camada_de_dados.h"
 #include "listas.h"
+#include "camada_de_dados.h"
 #include "logica.h"
+#include "interface.h"
+
+#define BUF_SIZE 1024
 
 ESTADO *inicializar_estado()
 {
@@ -108,10 +111,10 @@ int pode_mover(ESTADO *estado, int col, int lin)
 {
     int ans = 1;
     if (col == 0 && lin == 7) // canto superior esquerdo
-        if ((verifica_preta(estado, col - 1, lin)) && (verifica_preta(estado, col + 1, lin - 1)) && (verifica_preta(estado, col, lin - 1)))
+        if ((verifica_preta(estado, col + 1, lin)) && (verifica_preta(estado, col + 1, lin - 1)) && (verifica_preta(estado, col, lin - 1)))
             ans = 0;
     if (col == 7 && lin == 0) // canto inferior direito
-        if ((verifica_preta(estado, col + 1, lin)) && (verifica_preta(estado, col, lin + 1)) && (verifica_preta(estado, col - 1, lin - 1)))
+        if ((verifica_preta(estado, col - 1, lin)) && (verifica_preta(estado, col, lin + 1)) && (verifica_preta(estado, col - 1, lin + 1)))
             ans = 0;
     if (lin == 7 && col != 7 && col != 0) // linha de cima sem os 2 cantos
         if ((verifica_preta(estado, col, lin - 1)) && (verifica_preta(estado, col + 1, lin - 1)) && (verifica_preta(estado, col - 1, lin - 1)) && (verifica_preta(estado, col - 1, lin)) && (verifica_preta(estado, col + 1, lin)))
@@ -251,63 +254,19 @@ void armazena_jogada(ESTADO *e, COORDENADA c)
         e->jogadas[get_jogada(e)].jogador2 = c;
 }
 
-//
+/**
 
-void get_and_transforma_jogadas(ESTADO *e, int jog, int numero_da_jogada, char *coordenada)
-{
-    int col, lin;
-    if (jog == 1)
-    {
-        col = e->jogadas[numero_da_jogada].jogador1.coluna;
-        lin = e->jogadas[numero_da_jogada].jogador1.linha + 1;
-    }
-    else
-    {
-        col = e->jogadas[numero_da_jogada].jogador2.coluna;
-        lin = e->jogadas[numero_da_jogada].jogador2.linha + 1;
-    }
-
-    coordenada[0] = col + 'a';
-    coordenada[1] = lin + '0';
-}
-
-/*
+*/
 void print_string(char *string)
 {
     for (int i = 0; string[i]; i++)
     {
         putchar(string[i]);
     }
-}*/
-
-/*
-void fprint_string(FILE *fp, char *string)
-{
-    for (int i = 0; string[i]; i++)
-    {
-        fputc(string[i], fp);
-    }
 }
+/**
+Função que imprime as jogadas efetuadas até aquela etapa do jogo, com os repetivos números das jogadas
 */
-/*
-void display_jogadas(ESTADO *e){
-    int i,num_jogadas;
-    if (obter_jogador_atual(e)==1) num_jogadas = get_jogada(e)-1;
-    else num_jogadas = get_jogada(e);
-    char coordenada_final[]="a";
-    for(i=0;i<=num_jogadas;i++){
-        printf("%02d : ",i);
-        get_and_transforma_jogadas(e,1,i,coordenada_final);
-        print_string(coordenada_final);
-        get_and_transforma_jogadas(e,2,i,coordenada_final);
-        putchar(' ');
-        print_string(coordenada_final);
-        putchar('\');
-    }
-}
-*/
-
-//Função que imprime as jogadas efetuadas até aquela etapa do jogo, com os repetivos números das jogadas
 
 void fdisplay_jogadas(FILE *fp, ESTADO *e)
 {
@@ -387,28 +346,6 @@ void array_backup(ESTADO *e, JOGADAS backup, int pos)
     }
 }
 
-void ImprimeJogadas(ESTADO *e, int num_jogadas)
-{
-    int col, lin;
-    for (int i = 0; i <= num_jogadas; i++)
-    {
-        col = e->jogadas[i].jogador1.coluna;
-        lin = e->jogadas[i].jogador1.linha;
-        printf("Jog1 ");
-        printf("%c", col + 'a');
-        printf("%d", lin + 1);
-        putchar(' ');
-        putchar('|');
-        putchar(' ');
-        col = e->jogadas[i].jogador2.coluna;
-        lin = e->jogadas[i].jogador2.linha;
-        printf("Jog2 ");
-        printf("%c", col + 'a');
-        printf("%d", lin + 1);
-        putchar('\n');
-    }
-}
-
 void imprime_play(ESTADO *e, int n_jogada, int jogador, FILE *fp)
 {
     n_jogada--;
@@ -427,15 +364,6 @@ void imprime_play(ESTADO *e, int n_jogada, int jogador, FILE *fp)
         fprintf(fp, "%c", col + 'a');
         fprintf(fp, "%d", lin + 1);
     }
-}
-
-int obter_coluna_ult_jogada(ESTADO *e)
-{
-    return (e->ultima_jogada.coluna);
-}
-int obter_linha_ult_jogada(ESTADO *e)
-{
-    return (e->ultima_jogada.linha);
 }
 
 COORDENADA *selectcasas(ESTADO *e, llig lista, int *tamanho)
@@ -458,7 +386,7 @@ COORDENADA *selectcasas(ESTADO *e, llig lista, int *tamanho)
     return coordfinal;
 }
 
-void jog(ESTADO *e)
+void jogEuclidiano(ESTADO *e, int *jog1, int *jog2)
 {
     int tamanho = 0;
     llig lista;
@@ -467,7 +395,7 @@ void jog(ESTADO *e)
     COORDENADA *posicao = malloc(sizeof(listamalloc));
     posicao = selectcasas(e, lista, &tamanho);
     COORDENADA coord = {posicao->coluna, posicao->linha};
-    jogar(e, coord, 0, 0);
+    jogar(e, coord, jog1, jog2);
 }
 
 COORDENADA *devolveindice(llig lista, int indice) //[2,3,1,4,2,4,6] 2
@@ -507,8 +435,8 @@ llig armazena_posicoes(ESTADO *e, llig lista, int *tamanho)
     int col, lin;
     *tamanho = 0;
     COORDENADA coord;
-    col = obter_coluna_ult_jogada(e);
-    lin = obter_linha_ult_jogada(e);
+    col = get_coluna_anterior(e);
+    lin = get_linha_anterior(e);
     if ((col - 1 >= 0 && lin + 1 <= 7) && !verifica_preta(e, col - 1, lin + 1))
     {
         COORDENADA coord = {col - 1, lin + 1};
@@ -565,4 +493,68 @@ llig armazena_posicoes(ESTADO *e, llig lista, int *tamanho)
         (*tamanho)++;
     }
     return lista;
+}
+
+void ler(ESTADO *e, char *filename)
+{
+    FILE *fp;
+    fp = fopen(filename, "r");
+    char buffer[BUF_SIZE];
+    int l = 7, contador = 0, n_jogada, col, lin, i;
+    while (fgets(buffer, BUF_SIZE, fp) != NULL)
+    {
+        for (int c = 0; c <= 7 && l >= 0; c++)
+        {
+            set_casa(e, c, l, buffer[c]);
+        }
+        l--;
+        contador++;
+        if (contador >= 10 && buffer[i++])
+        {
+            n_jogada = contador - 10;
+            col = buffer[4] - 'a';
+            lin = buffer[5] - '1';
+            le_e_escreve_jogadas(e, col, lin, n_jogada + 1, 1);
+            col = buffer[7] - 'a';
+            lin = buffer[8] - '1';
+            le_e_escreve_jogadas(e, col, lin, n_jogada + 1, 2);
+        }
+    }
+    if (!buffer[7])
+        e->jogador_atual = 2;
+    else
+        e->jogador_atual = 1;
+    e->jogada = n_jogada + 2;
+    fclose(fp);
+    mostrar_tabuleiro(e);
+}
+
+void gravar(ESTADO *e, char *filename)
+{
+    FILE *fp;
+    fp = fopen(filename, "w");
+    mostrar_tabuleiro_gr(fp, e);
+    fputc('\n', fp);
+    fdisplay_jogadas(fp, e);
+    fclose(fp);
+}
+
+void jogRandom(ESTADO *e, int *jog1, int *jog2)
+{
+    int tamanho = 0, indice;
+    llig lista;
+    lista = criar_lista();
+    lista = armazena_posicoes(e, lista, &tamanho);
+    indice = rand() % tamanho;
+    COORDENADA *posicao = malloc(sizeof(listamalloc));
+    posicao = devolveindice(lista, indice);
+    COORDENADA coord = {posicao->coluna, posicao->linha};
+    jogar(e, coord, jog1, jog2);
+}
+
+COORDENADA *aloca_coord(COORDENADA c)
+{
+    COORDENADA *coord2 = (COORDENADA *)malloc(sizeof(COORDENADA) * 2);
+    *coord2 = c;
+    return coord2;
 }

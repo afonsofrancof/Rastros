@@ -1,0 +1,60 @@
+\hypertarget{interface_8h}{}\section{Referência ao ficheiro interface.\+h}
+\label{interface_8h}\index{interface.\+h@{interface.\+h}}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}{mostrar\+\_\+tabuleiro} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+void \hyperlink{interface_8h_a431d8c5147e6aff9748433fe276ee8d4}{mostrar\+\_\+tabuleiro\+\_\+gr} (F\+I\+LE $\ast$fp, \hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+int \hyperlink{interface_8h_a24da95ebeede4a540e37790ce8be359b}{interpretador} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e)
+\item 
+void \hyperlink{interface_8h_acd0fc3ea18b6d2623609cfa38611859e}{mostra\+\_\+pos} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, int pos, int $\ast$contador)
+\item 
+void \hyperlink{interface_8h_ab184b82fd763449103d10b56b797c537}{ler} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, char $\ast$filename)
+\item 
+void \hyperlink{interface_8h_a77c3b8a0bfaea37ab083920b6d253537}{gravar} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$e, char $\ast$filename)
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Modulo da interface , para interação máquina-\/jogador 
+
+\subsection{Documentação das funções}
+\mbox{\Hypertarget{interface_8h_a77c3b8a0bfaea37ab083920b6d253537}\label{interface_8h_a77c3b8a0bfaea37ab083920b6d253537}} 
+\index{interface.\+h@{interface.\+h}!gravar@{gravar}}
+\index{gravar@{gravar}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{gravar()}{gravar()}}
+{\footnotesize\ttfamily void gravar (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+Grava o estado do jogo num ficheiro \mbox{\Hypertarget{interface_8h_a24da95ebeede4a540e37790ce8be359b}\label{interface_8h_a24da95ebeede4a540e37790ce8be359b}} 
+\index{interface.\+h@{interface.\+h}!interpretador@{interpretador}}
+\index{interpretador@{interpretador}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{interpretador()}{interpretador()}}
+{\footnotesize\ttfamily int interpretador (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+Recebe e efetua as jogadas efetuadas e os várias comandos implementados \mbox{\Hypertarget{interface_8h_ab184b82fd763449103d10b56b797c537}\label{interface_8h_ab184b82fd763449103d10b56b797c537}} 
+\index{interface.\+h@{interface.\+h}!ler@{ler}}
+\index{ler@{ler}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{ler()}{ler()}}
+{\footnotesize\ttfamily void ler (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+Le o estado a partir de um ficheiro \mbox{\Hypertarget{interface_8h_acd0fc3ea18b6d2623609cfa38611859e}\label{interface_8h_acd0fc3ea18b6d2623609cfa38611859e}} 
+\index{interface.\+h@{interface.\+h}!mostra\+\_\+pos@{mostra\+\_\+pos}}
+\index{mostra\+\_\+pos@{mostra\+\_\+pos}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{mostra\+\_\+pos()}{mostra\_pos()}}
+{\footnotesize\ttfamily void mostra\+\_\+pos (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e,  }\item[{int}]{pos,  }\item[{int $\ast$}]{contador }\end{DoxyParamCaption})}
+
+Mostra o tabuleiro na jogada indicada no inputm fazendo as devidas alterações no estado para que o jogo possa continuar \mbox{\Hypertarget{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}\label{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}} 
+\index{interface.\+h@{interface.\+h}!mostrar\+\_\+tabuleiro@{mostrar\+\_\+tabuleiro}}
+\index{mostrar\+\_\+tabuleiro@{mostrar\+\_\+tabuleiro}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{mostrar\+\_\+tabuleiro()}{mostrar\_tabuleiro()}}
+{\footnotesize\ttfamily void mostrar\+\_\+tabuleiro (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+Mostra o tabuleiro atual \mbox{\Hypertarget{interface_8h_a431d8c5147e6aff9748433fe276ee8d4}\label{interface_8h_a431d8c5147e6aff9748433fe276ee8d4}} 
+\index{interface.\+h@{interface.\+h}!mostrar\+\_\+tabuleiro\+\_\+gr@{mostrar\+\_\+tabuleiro\+\_\+gr}}
+\index{mostrar\+\_\+tabuleiro\+\_\+gr@{mostrar\+\_\+tabuleiro\+\_\+gr}!interface.\+h@{interface.\+h}}
+\subsubsection{\texorpdfstring{mostrar\+\_\+tabuleiro\+\_\+gr()}{mostrar\_tabuleiro\_gr()}}
+{\footnotesize\ttfamily void mostrar\+\_\+tabuleiro\+\_\+gr (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{e }\end{DoxyParamCaption})}
+
+Mostra o tabuleiro atual no file pointer passado no input 

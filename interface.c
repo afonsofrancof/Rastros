@@ -78,50 +78,6 @@ void mostrar_tabuleiro_gr(FILE *fp, ESTADO *e)
     }
 }
 
-void gravar(ESTADO *e, char *filename)
-{
-    FILE *fp;
-    fp = fopen(filename, "w");
-    mostrar_tabuleiro_gr(fp, e);
-    fputc('\n', fp);
-    fdisplay_jogadas(fp, e);
-    fclose(fp);
-}
-
-void ler(ESTADO *e, char *filename)
-{
-    FILE *fp;
-    fp = fopen(filename, "r");
-    char buffer[BUF_SIZE];
-    int l = 7, contador = 0, n_jogada, col, lin, i;
-    while (fgets(buffer, BUF_SIZE, fp) != NULL)
-    {
-        for (int c = 0; c <= 7 && l >= 0; c++)
-        {
-            set_casa(e, c, l, buffer[c]);
-        }
-        l--;
-        contador++;
-        if (contador >= 10 && buffer[i++])
-        {
-            n_jogada = contador - 10;
-            col = buffer[4] - 'a';
-            lin = buffer[5] - '1';
-            le_e_escreve_jogadas(e, col, lin, n_jogada + 1, 1);
-            col = buffer[7] - 'a';
-            lin = buffer[8] - '1';
-            le_e_escreve_jogadas(e, col, lin, n_jogada + 1, 2);
-        }
-    }
-    if (!buffer[7])
-        e->jogador_atual = 2;
-    else
-        e->jogador_atual = 1;
-    e->jogada = n_jogada + 2;
-    fclose(fp);
-    mostrar_tabuleiro(e);
-}
-
 void mostra_pos(ESTADO *e, int pos, int *contador)
 {
 
@@ -145,9 +101,18 @@ int interpretador(ESTADO *e)
         printf("#%d  PL %d (%d) -> ", num_comandos, obter_jogador_atual(e), get_jogada(e));
         if (fgets(linha, BUF_SIZE, stdin) == NULL)
             return 0;
-        else if (sscanf(linha, "%[j]%[o]%[g]", aux, aux, aux) == 3)
+        else if (sscanf(linha, "%[j]%[o]%[g]%[1]", aux, aux, aux, aux) == 4)
         {
-            jog(e);
+            jogEuclidiano(e, &jog1, &jog2);
+            mostrar_tabuleiro(e);
+            atualiza_jogadas(e); //alterado
+            contador++;
+            modifica_jogador_atual(e, contador); //# <número de comandos> PL<1 ou 2 conforme o jogador> (<número da jogada atual>)>
+            num_comandos++;
+        }
+        else if (sscanf(linha, "%[j]%[o]%[g]%[2]", aux, aux, aux, aux) == 4)
+        {
+            jogRandom(e, &jog1, &jog2);
             mostrar_tabuleiro(e);
             atualiza_jogadas(e); //alterado
             contador++;

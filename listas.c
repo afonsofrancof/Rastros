@@ -45,27 +45,6 @@ int lista_esta_vazia(llig L)
     return ans;
 }
 
-COORDENADA *aloca_coord(COORDENADA c)
-{
-    COORDENADA *coord2 = (COORDENADA *)malloc(sizeof(COORDENADA) * 2);
-    *coord2 = c;
-    return coord2;
-}
-
-void imprimellig(llig l)
-{
-    while (l)
-    {
-        COORDENADA *coord = malloc(sizeof(COORDENADA) * 2);
-        coord = l->head;
-        printf("%d", coord->coluna);
-        printf("%d", coord->linha);
-        l = l->tail;
-        putchar(' ');
-    }
-    putchar('\n');
-}
-
 int menorelem(float *save, int *tamanho)
 {
     int menor = 0;

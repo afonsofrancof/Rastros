@@ -1,0 +1,90 @@
+\hypertarget{listas_8h}{}\section{Referência ao ficheiro listas.\+h}
+\label{listas_8h}\index{listas.\+h@{listas.\+h}}
+\subsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnodo}{nodo}
+\end{DoxyCompactItemize}
+\subsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{listas_8h_aec202d8cd9b7e0e37574931643229870}\label{listas_8h_aec202d8cd9b7e0e37574931643229870}} 
+typedef struct \hyperlink{structnodo}{nodo} $\ast$ {\bfseries llig}
+\item 
+\mbox{\Hypertarget{listas_8h_ab3d5960ebb3ef31520e13831aabd7c7d}\label{listas_8h_ab3d5960ebb3ef31520e13831aabd7c7d}} 
+typedef struct \hyperlink{structnodo}{nodo} {\bfseries listamalloc}
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structnodo}{llig} \hyperlink{listas_8h_a3f533b20c9ab2ad5b12ea67b8de913a7}{criar\+\_\+lista} ()
+\item 
+\hyperlink{structnodo}{llig} \hyperlink{listas_8h_a3b000660acfaf305fe0478b37ca7e95d}{insere\+\_\+cabeca} (\hyperlink{structnodo}{llig} L, void $\ast$valor)
+\item 
+void $\ast$ \hyperlink{listas_8h_ae0629c9fcb27ca78d3e0f23e43399fa0}{devolve\+\_\+cabeca} (\hyperlink{structnodo}{llig} L)
+\item 
+\hyperlink{structnodo}{llig} \hyperlink{listas_8h_a004488958386a9d9cde72853c6d95980}{proximo} (\hyperlink{structnodo}{llig} L)
+\item 
+\hyperlink{structnodo}{llig} \hyperlink{listas_8h_a1907baaf7c56752c0508e5dc0198f1da}{remove\+\_\+cabeca} (\hyperlink{structnodo}{llig} L)
+\item 
+int \hyperlink{listas_8h_a04ef0ee31d481227d9765b65f38b33ea}{lista\+\_\+esta\+\_\+vazia} (\hyperlink{structnodo}{llig} L)
+\item 
+int \hyperlink{listas_8h_a9382f86f4fe3ab60886b484693bc06c5}{menorelem} (float $\ast$save, int $\ast$tamanho)
+\item 
+\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} $\ast$ \hyperlink{listas_8h_ae38a7327a92c590b3d6c53e7891b609f}{aloca\+\_\+coord} (\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA} c)
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Modulo de listas ligadas 
+
+\subsection{Documentação das funções}
+\mbox{\Hypertarget{listas_8h_ae38a7327a92c590b3d6c53e7891b609f}\label{listas_8h_ae38a7327a92c590b3d6c53e7891b609f}} 
+\index{listas.\+h@{listas.\+h}!aloca\+\_\+coord@{aloca\+\_\+coord}}
+\index{aloca\+\_\+coord@{aloca\+\_\+coord}!listas.\+h@{listas.\+h}}
+\subsubsection{\texorpdfstring{aloca\+\_\+coord()}{aloca\_coord()}}
+{\footnotesize\ttfamily \hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}$\ast$ aloca\+\_\+coord (\begin{DoxyParamCaption}\item[{\hyperlink{structCOORDENADA}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}]{c }\end{DoxyParamCaption})}
+
+Aloca espaço na memória para uma coordenada e devolve o apontador da nova coordenada \mbox{\Hypertarget{listas_8h_a3f533b20c9ab2ad5b12ea67b8de913a7}\label{listas_8h_a3f533b20c9ab2ad5b12ea67b8de913a7}} 
+\index{listas.\+h@{listas.\+h}!criar\+\_\+lista@{criar\+\_\+lista}}
+\index{criar\+\_\+lista@{criar\+\_\+lista}!listas.\+h@{listas.\+h}}
+\subsubsection{\texorpdfstring{criar\+\_\+lista()}{criar\_lista()}}
+{\footnotesize\ttfamily \hyperlink{structnodo}{llig} criar\+\_\+lista (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Cria uma lista vazia \mbox{\Hypertarget{listas_8h_ae0629c9fcb27ca78d3e0f23e43399fa0}\label{listas_8h_ae0629c9fcb27ca78d3e0f23e43399fa0}} 
+\index{listas.\+h@{listas.\+h}!devolve\+\_\+cabeca@{devolve\+\_\+cabeca}}
+\index{devolve\+\_\+cabeca@{devolve\+\_\+cabeca}!listas.\+h@{listas.\+h}}
+\subsubsection{\texorpdfstring{devolve\+\_\+cabeca()}{devolve\_cabeca()}}
+{\footnotesize\ttfamily void$\ast$ devolve\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{llig}}]{L }\end{DoxyParamCaption})}
+
+Devolve a cabeça da lista \mbox{\Hypertarget{listas_8h_a3b000660acfaf305fe0478b37ca7e95d}\label{listas_8h_a3b000660acfaf305fe0478b37ca7e95d}} 
+\index{listas.\+h@{listas.\+h}!insere\+\_\+cabeca@{insere\+\_\+cabeca}}
+\index{insere\+\_\+cabeca@{insere\+\_\+cabeca}!listas.\+h@{listas.\+h}}
+\subsubsection{\texorpdfstring{insere\+\_\+cabeca()}{insere\_cabeca()}}
+{\footnotesize\ttfamily \hyperlink{structnodo}{llig} insere\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{llig}}]{L,  }\item[{void $\ast$}]{valor }\end{DoxyParamCaption})}
+
+Insere um valor na cabeça da lista \mbox{\Hypertarget{listas_8h_a04ef0ee31d481227d9765b65f38b33ea}\label{listas_8h_a04ef0ee31d481227d9765b65f38b33ea}} 
+\index{listas.\+h@{listas.\+h}!lista\+\_\+esta\+\_\+vazia@{lista\+\_\+esta\+\_\+vazia}}
+\index{lista\+\_\+esta\+\_\+vazia@{lista\+\_\+esta\+\_\+vazia}!listas.\+h@{listas.\+h}}
+\subsubsection{\texorpdfstring{lista\+\_\+esta\+\_\+vazia()}{lista\_esta\_vazia()}}
+{\footnotesize\ttfamily int lista\+\_\+esta\+\_\+vazia (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{llig}}]{L }\end{DoxyParamCaption})}
+
+Devolve verdareiro se a lista é vazia \mbox{\Hypertarget{listas_8h_a9382f86f4fe3ab60886b484693bc06c5}\label{listas_8h_a9382f86f4fe3ab60886b484693bc06c5}} 
+\index{listas.\+h@{listas.\+h}!menorelem@{menorelem}}
+\index{menorelem@{menorelem}!listas.\+h@{listas.\+h}}
+\subsubsection{\texorpdfstring{menorelem()}{menorelem()}}
+{\footnotesize\ttfamily int menorelem (\begin{DoxyParamCaption}\item[{float $\ast$}]{save,  }\item[{int $\ast$}]{tamanho }\end{DoxyParamCaption})}
+
+Determina o índice do menor elemento do array \mbox{\Hypertarget{listas_8h_a004488958386a9d9cde72853c6d95980}\label{listas_8h_a004488958386a9d9cde72853c6d95980}} 
+\index{listas.\+h@{listas.\+h}!proximo@{proximo}}
+\index{proximo@{proximo}!listas.\+h@{listas.\+h}}
+\subsubsection{\texorpdfstring{proximo()}{proximo()}}
+{\footnotesize\ttfamily \hyperlink{structnodo}{llig} proximo (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{llig}}]{L }\end{DoxyParamCaption})}
+
+Devolve a cauda da lista \mbox{\Hypertarget{listas_8h_a1907baaf7c56752c0508e5dc0198f1da}\label{listas_8h_a1907baaf7c56752c0508e5dc0198f1da}} 
+\index{listas.\+h@{listas.\+h}!remove\+\_\+cabeca@{remove\+\_\+cabeca}}
+\index{remove\+\_\+cabeca@{remove\+\_\+cabeca}!listas.\+h@{listas.\+h}}
+\subsubsection{\texorpdfstring{remove\+\_\+cabeca()}{remove\_cabeca()}}
+{\footnotesize\ttfamily \hyperlink{structnodo}{llig} remove\+\_\+cabeca (\begin{DoxyParamCaption}\item[{\hyperlink{structnodo}{llig}}]{L }\end{DoxyParamCaption})}
+
+Remove a cabeça da lista (libertando o espaço ocupado) e devolve a cauda 
