@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="md_README" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>Rastros</title>
+    <detaileddescription>
+<para><heading level="2">Grupo</heading>
+</para><para>LI2 - PL7 - Grupo 9</para><para><heading level="2">Constituição do Grupo</heading>
+</para><para>Afonso Franco Ferreira , A93212 Diogo Camacho Barbosa , A93184</para><para>Mudanças ficam temporariamente na branch *dev , e só damos merge quando estáveis. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

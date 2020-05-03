@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="logica_8c" kind="file" language="C++">
+    <compoundname>logica.c</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">math.h</includes>
+    <includes refid="camada__de__dados_8h" local="yes">camada_de_dados.h</includes>
+    <includes refid="logica_8h" local="yes">logica.h</includes>
+    <incdepgraph>
+      <node id="39">
+        <label>stdlib.h</label>
+      </node>
+      <node id="42">
+        <label>listas.h</label>
+        <link refid="listas_8h"/>
+      </node>
+      <node id="40">
+        <label>math.h</label>
+      </node>
+      <node id="37">
+        <label>logica.c</label>
+        <link refid="logica_8c"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>logica.h</label>
+        <link refid="logica_8h"/>
+      </node>
+      <node id="41">
+        <label>camada_de_dados.h</label>
+        <link refid="camada__de__dados_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="logica_8c_1a76f26b23846c929005ff6c26635e71d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int jogar</definition>
+        <argsstring>(ESTADO *e, COORDENADA c, int *jog1, int *jog2)</argsstring>
+        <name>jogar</name>
+        <param>
+          <type><ref refid="structESTADO" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+          <defname>e</defname>
+        </param>
+        <param>
+          <type><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref></type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>jog1</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>jog2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que joga </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.c" line="7" column="1" bodyfile="logica.c" bodystart="7" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="camada__de__dados_8h" kindref="compound">camada_de_dados.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logica_8h" kindref="compound">logica.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a8c5b876f54c4650bc780c01cc3ad0f1b" kindref="member">jogar</ref>(<ref refid="structESTADO" kindref="compound">ESTADO</ref><sp/>*e,<sp/><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref><sp/>c,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*jog1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*jog2)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col<sp/>=<sp/><ref refid="camada__de__dados_8h_1a84c6048afd16375832682a6149460797" kindref="member">get_coluna</ref>(c),<sp/>lin<sp/>=<sp/><ref refid="camada__de__dados_8h_1a75b3b7a34bef41ea011c00483af81490" kindref="member">get_linha</ref>(c);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="camada__de__dados_8h_1af07a315536e57ea96b16c3e232e9eb54" kindref="member">obter_estado_casa</ref>(e,<sp/>col,<sp/>lin)<sp/>!=<sp/>PRETA)<sp/>&amp;&amp;<sp/>(<ref refid="camada__de__dados_8h_1abac41dceaa2551d1def3f4fbb06b0758" kindref="member">is_near_branca</ref>(e,<sp/>col,<sp/>lin))<sp/>&amp;&amp;<sp/>((lin<sp/>!=<sp/><ref refid="camada__de__dados_8h_1a32c50b3f634081b92875d9618d1aec9c" kindref="member">get_linha_anterior</ref>(e))<sp/>||<sp/>(col<sp/>!=<sp/><ref refid="camada__de__dados_8h_1a1a7934f5355f2ca33164b8293752cf6e" kindref="member">get_coluna_anterior</ref>(e))))</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>&amp;&amp;((lin&lt;8)&amp;&amp;(col&lt;8)&amp;&amp;(lin&gt;=0)&amp;&amp;(col&gt;=0))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="camada__de__dados_8h_1aad79e0ccf12ac3d67684bde2f2e4ed40" kindref="member">put_preta</ref>(e);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="camada__de__dados_8h_1a55106112fc732be07081af171cd0ee29" kindref="member">put_branca</ref>(e,<sp/>col,<sp/>lin);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="camada__de__dados_8h_1a6bf7f42979ba1ed2a8046535ff25ccb1" kindref="member">atualiza_ultima_jogada</ref>(e,<sp/>col,<sp/>lin);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="camada__de__dados_8h_1a52c1dbe8bebf17fb7245b067339f15a7" kindref="member">armazena_jogada</ref>(e,<sp/>c);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(col<sp/>==<sp/>7<sp/>&amp;&amp;<sp/>lin<sp/>==<sp/>7)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*jog2<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(col<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>lin<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*jog1<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Jogada<sp/>inválida\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="logica.c"/>
+  </compounddef>
+</doxygen>

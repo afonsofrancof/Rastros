@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structnodo" kind="struct" language="C++" prot="public">
+    <compoundname>nodo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structnodo_1a84e804ff33256ef9fc2667affcf0bed1" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* nodo::head</definition>
+        <argsstring></argsstring>
+        <name>head</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="listas.h" line="6" column="1" bodyfile="listas.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structnodo_1ae4cede7babb31055f5c770b71f0ff3e5" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structnodo" kindref="compound">nodo</ref> *</type>
+        <definition>struct nodo* nodo::tail</definition>
+        <argsstring></argsstring>
+        <name>tail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="listas.h" line="7" column="1" bodyfile="listas.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="10">
+        <label>nodo</label>
+        <link refid="structnodo"/>
+        <childnode refid="10" relation="usage">
+          <edgelabel>tail</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="listas.h" line="5" column="1" bodyfile="listas.h" bodystart="4" bodyend="8"/>
+    <listofallmembers>
+      <member refid="structnodo_1a84e804ff33256ef9fc2667affcf0bed1" prot="public" virt="non-virtual"><scope>nodo</scope><name>head</name></member>
+      <member refid="structnodo_1ae4cede7babb31055f5c770b71f0ff3e5" prot="public" virt="non-virtual"><scope>nodo</scope><name>tail</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

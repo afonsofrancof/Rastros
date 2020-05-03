@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rastros: Código-Fonte de listas.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Rastros
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">listas.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="listas_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LISTAS_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define LISTAS_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="structnodo.html">    4</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structnodo.html">nodo</a></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">void</span> *head;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">struct </span><a class="code" href="structnodo.html">nodo</a> *tail;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;} * <a class="code" href="structnodo.html">llig</a>, <a class="code" href="structnodo.html">listamalloc</a>;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="structnodo.html">llig</a> <a class="code" href="listas_8h.html#a3f533b20c9ab2ad5b12ea67b8de913a7">criar_lista</a>();</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="structnodo.html">llig</a> <a class="code" href="listas_8h.html#a3b000660acfaf305fe0478b37ca7e95d">insere_cabeca</a>(<a class="code" href="structnodo.html">llig</a> L, <span class="keywordtype">void</span> *valor);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="listas_8h.html#ae0629c9fcb27ca78d3e0f23e43399fa0">devolve_cabeca</a>(<a class="code" href="structnodo.html">llig</a> L);</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="structnodo.html">llig</a> <a class="code" href="listas_8h.html#a004488958386a9d9cde72853c6d95980">proximo</a>(<a class="code" href="structnodo.html">llig</a> L);</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="structnodo.html">llig</a> <a class="code" href="listas_8h.html#a1907baaf7c56752c0508e5dc0198f1da">remove_cabeca</a>(<a class="code" href="structnodo.html">llig</a> L);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">int</span> <a class="code" href="listas_8h.html#a04ef0ee31d481227d9765b65f38b33ea">lista_esta_vazia</a>(<a class="code" href="structnodo.html">llig</a> L);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">int</span> <a class="code" href="listas_8h.html#a9382f86f4fe3ab60886b484693bc06c5">menorelem</a>(<span class="keywordtype">float</span> *save, <span class="keywordtype">int</span> *tamanho);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="listas_8h_html_a1907baaf7c56752c0508e5dc0198f1da"><div class="ttname"><a href="listas_8h.html#a1907baaf7c56752c0508e5dc0198f1da">remove_cabeca</a></div><div class="ttdeci">llig remove_cabeca(llig L)</div><div class="ttdef"><b>Definition:</b> listas.c:35</div></div>
+<div class="ttc" id="listas_8h_html_a9382f86f4fe3ab60886b484693bc06c5"><div class="ttname"><a href="listas_8h.html#a9382f86f4fe3ab60886b484693bc06c5">menorelem</a></div><div class="ttdeci">int menorelem(float *save, int *tamanho)</div><div class="ttdef"><b>Definition:</b> listas.c:49</div></div>
+<div class="ttc" id="listas_8h_html_ae0629c9fcb27ca78d3e0f23e43399fa0"><div class="ttname"><a href="listas_8h.html#ae0629c9fcb27ca78d3e0f23e43399fa0">devolve_cabeca</a></div><div class="ttdeci">void * devolve_cabeca(llig L)</div><div class="ttdef"><b>Definition:</b> listas.c:28</div></div>
+<div class="ttc" id="structnodo_html"><div class="ttname"><a href="structnodo.html">nodo</a></div><div class="ttdef"><b>Definition:</b> listas.h:4</div></div>
+<div class="ttc" id="listas_8h_html_a3b000660acfaf305fe0478b37ca7e95d"><div class="ttname"><a href="listas_8h.html#a3b000660acfaf305fe0478b37ca7e95d">insere_cabeca</a></div><div class="ttdeci">llig insere_cabeca(llig L, void *valor)</div><div class="ttdef"><b>Definition:</b> listas.c:17</div></div>
+<div class="ttc" id="listas_8h_html_a004488958386a9d9cde72853c6d95980"><div class="ttname"><a href="listas_8h.html#a004488958386a9d9cde72853c6d95980">proximo</a></div><div class="ttdeci">llig proximo(llig L)</div><div class="ttdef"><b>Definition:</b> listas.c:30</div></div>
+<div class="ttc" id="listas_8h_html_a04ef0ee31d481227d9765b65f38b33ea"><div class="ttname"><a href="listas_8h.html#a04ef0ee31d481227d9765b65f38b33ea">lista_esta_vazia</a></div><div class="ttdeci">int lista_esta_vazia(llig L)</div><div class="ttdef"><b>Definition:</b> listas.c:41</div></div>
+<div class="ttc" id="listas_8h_html_a3f533b20c9ab2ad5b12ea67b8de913a7"><div class="ttname"><a href="listas_8h.html#a3f533b20c9ab2ad5b12ea67b8de913a7">criar_lista</a></div><div class="ttdeci">llig criar_lista()</div><div class="ttdef"><b>Definition:</b> listas.c:9</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
