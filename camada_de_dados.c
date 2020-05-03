@@ -275,7 +275,6 @@ void fdisplay_jogadas(FILE *fp, ESTADO *e)
         num_jogadas = get_jogada(e) - 1;
     else
         num_jogadas = get_jogada(e);
-    char coordenada_final[] = "a";
 
     for (i = 2; i <= num_jogadas + 1; i++)
     {
@@ -378,6 +377,7 @@ COORDENADA *selectcasas(ESTADO *e, llig lista, int *tamanho)
     {
         coord = temp->head;
         save[i] = distanciacasas(coord, jog);
+        printf("%f \n", save[i]);
         temp = temp->tail;
     }
     int menorindice = menorelem(save, tamanho);
@@ -415,19 +415,23 @@ COORDENADA *devolveindice(llig lista, int indice) //[2,3,1,4,2,4,6] 2
 float distanciacasas(COORDENADA *coord, int jog)
 {
     int catetox, catetoy;
-
+    float dist;
     if (jog == 1)
     {
         catetox = coord->coluna;
         catetoy = coord->linha;
+        dist = sqrt((catetox * catetox) + (catetoy * catetoy));
+        printf("Jog1 : ");
+        return dist;
     }
     else
     {
-        catetox = 7 - coord->coluna;
-        catetoy = 7 - coord->linha;
+        catetox = coord->coluna;
+        catetoy = coord->linha;
+        dist = sqrt((7 - catetox) * (7 - catetox) + (7 - catetoy) * (7 - catetoy));
+        printf("Jog2 : ");
+        return dist;
     }
-    float dist = sqrt((catetox ^ 2) + (catetoy ^ 2));
-    return dist;
 }
 
 llig armazena_posicoes(ESTADO *e, llig lista, int *tamanho)
@@ -500,7 +504,7 @@ void ler(ESTADO *e, char *filename)
     FILE *fp;
     fp = fopen(filename, "r");
     char buffer[BUF_SIZE];
-    int l = 7, contador = 0, n_jogada, col, lin, i;
+    int l = 7, contador = 0, n_jogada = 0, col, lin, i = 0;
     while (fgets(buffer, BUF_SIZE, fp) != NULL)
     {
         for (int c = 0; c <= 7 && l >= 0; c++)
@@ -525,6 +529,7 @@ void ler(ESTADO *e, char *filename)
     else
         e->jogador_atual = 1;
     e->jogada = n_jogada + 2;
+
     fclose(fp);
     mostrar_tabuleiro(e);
 }

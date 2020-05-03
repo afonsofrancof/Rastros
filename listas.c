@@ -11,6 +11,7 @@ llig criar_lista()
     llig lista = malloc(sizeof(listamalloc));
     lista->head = NULL;
     lista->tail = NULL;
+    return lista;
 }
 
 llig insere_cabeca(llig L, void *valor)
