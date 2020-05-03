@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Rastros<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Grupo</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">LI2<sp/>-<sp/>PL7<sp/>-<sp/>Grupo<sp/>9</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Constituição<sp/>do<sp/>Grupo</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Afonso<sp/>Franco<sp/>Ferreira<sp/>,<sp/>A93212</highlight></codeline>
+<codeline><highlight class="normal">Diogo<sp/>Camacho<sp/>Barbosa<sp/>,<sp/>A93184</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Mudanças<sp/>ficam<sp/>temporariamente<sp/>na<sp/>branch<sp/>*dev<sp/>,<sp/>e<sp/>só<sp/>damos<sp/>merge<sp/>quando<sp/>estáveis.</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>
